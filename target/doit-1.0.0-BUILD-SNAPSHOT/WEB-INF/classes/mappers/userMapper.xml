@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="com.kakaolove.doit.testMapper">
+ 
+    <select id="selectNow" resultType="String">
+        SELECT NOW()
+    </select>
+    
+</mapper>
