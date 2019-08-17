@@ -24,13 +24,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-  	
 	@Autowired
 	private TestService service;
+	
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
-    	String result=service.selectNow();
-        model.addAttribute("serverTime", result );
+    	
+        model.addAttribute("serverTime", "hello" );
         
         return "home";
     }
