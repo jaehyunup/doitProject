@@ -3,14 +3,6 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!--패키지명환경변수설정 -->
-	<typeAliases>
-	 	<!-- 
-        <typeAlias type="com.kakaolove.doit.VO.UserVO" alias="UserVO"></typeAlias>
-        <typeAlias type="com.deu.webapp.VO.BoardVO" alias="BoardVO"></typeAlias>
-        <typeAlias type="com.deu.webapp.VO.FileVO" alias="FileVO"></typeAlias>
-         -->
-    </typeAliases>
-    
+	
 
 </configuration>

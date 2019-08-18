@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kakaolove.doit.testMapper">
+<mapper namespace="userMapper">
  
-    <select id="selectNow" resultType="String">
-        SELECT NOW()
-    </select>
-    
+     <!-- 로그인을 위한 회원  조회 -->
+	 <select id="selectUser" resultType="com.kakaolove.doit.security.customUserDetails">
+		<![CDATA[
+		select user.id, user.pw, authority 
+		from authorities,user 
+		where user.id=#{id} and user.id=authorities.id;
+		]]>
+	 </select>
+	
+	 <!-- 회원 추가 -->
+	 <insert id="insertUser" parameterType="com.kakaolove.doit.security.customUserDetails"> 
+		INSERT INTO USER 
+		VALUES (#{id},#{pw});
+		
+		insert into authorities
+		VALUES (#{id},'ROLE_USER');
+	 </insert> 
+	 
+	 <!--  회원 정보 수정 -->
+	 <update id="updateUser" parameterType="com.kakaolove.doit.security.customUserDetails">
+	  UPDATE USER SET pw = #{pw} WHERE id = #{id} 
+	  </update> 
+	 
+	 <!-- 회원 삭제 --> 
+	 <delete id="deleteUser" parameterType="String"> 
+	 DELETE FROM USER WHERE id = #{id}
+	 </delete>
+
+
 </mapper>
