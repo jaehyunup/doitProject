@@ -6,11 +6,7 @@
 	
      <!-- 유저 프로필 삽입(첫1회 -->
 	 <insert id="insertuserprofile" parameterType="com.kakaolove.doit.vo.userProfileVO">
-		<![CDATA[
-		select *
-		from user_profile 
-		where user.id=#{id};
-		]]>
+		
 	 </insert>
 	
 	 <!-- 프로필 수정  -->
@@ -24,7 +20,9 @@
 	 <!-- 유저 프로필 삽입(첫1회 -->
 	 <select id="selectuserProfile" resultType="com.kakaolove.doit.vo.userProfileVO">
 		<![CDATA[
-		
+		select *
+		from user_profile
+		where id=#{id};
 		]]>
 	 </select>
 	 

@@ -61,6 +61,8 @@
     	<security:intercept-url pattern="/myprofile" access="isAuthenticated()"/>    	
 		<security:intercept-url pattern="/register" access="hasRole('ROLE_ANONYMOUS')"/>
 		<security:intercept-url pattern="/registerok" access="hasRole('ROLE_ANONYMOUS')"/>
+		<security:intercept-url pattern="/project/**" access="permitAll()" />
+    	<security:intercept-url pattern="/place/**" access="permitAll()" />
 
 		
 		

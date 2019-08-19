@@ -18,14 +18,14 @@ public class userProfileServiceImpl implements userProfileService {
 	}
 
 	@Override
-	public userProfileVO getuserProfile(String userid) throws Exception {
+	public userProfileVO getuserProfile(String id) throws Exception {
 		
-		return dao.getuserProfile(userid);
+		return dao.getuserProfile(id);
 	}
 
 	@Override
-	public int modifyuserProfile(userProfileVO userid) throws Exception {
-		return dao.modifyuserProfile(userid);
+	public int modifyuserProfile(userProfileVO userprofilevo) throws Exception {
+		return dao.modifyuserProfile(userprofilevo);
 	}
 	
 }

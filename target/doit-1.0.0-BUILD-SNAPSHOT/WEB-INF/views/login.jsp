@@ -22,7 +22,7 @@
   		
 </head>
 
-<body onload="document.f.username.focus();">
+<body>
   <div id="app">
     <section class="section">
       <div class="d-flex flex-wrap align-items-stretch">

@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,20 +26,20 @@ public class ProfileController {
 	private userProfileService profileservice; 
 	
     @RequestMapping(value = "/myprofile", method = RequestMethod.GET)
-	public String myprofile(@ModelAttribute userProfileVO userprofilevo  ,Principal principal,Locale locale,Model model) {    		
+	public String myprofile(Principal principal,Locale locale,Model model) {    		
     		Authentication authentication=SecurityContextHolder.getContext().getAuthentication(); // context 인증정보 받기
+    		userProfileVO userprofilevo=new userProfileVO(); 
     		if(authentication.getName()=="anonymousUser") { // 로그인되어있지않은(허가 되지않은) 사용자
     			return "redirect:/login";
     		}
     		
     		try{
-    			userProfileVO profilevo=profileservice.getuserProfile(authentication.getName());
+    			userprofilevo=(userProfileVO)profileservice.getuserProfile(authentication.getName());
     		}catch(Exception a){
     			logger.info("프로필을 불러오지못하는 문제 발생");
     			return "redirect:/";
     		}
-    		
-    		model.addAttribute("profile", profilevo);
+    		model.addAttribute("profile",userprofilevo);
     		
     	return "myprofile"; // login.jsp(Custom Login Page)
 	}  
