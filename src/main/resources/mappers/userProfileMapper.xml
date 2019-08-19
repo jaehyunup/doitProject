@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="profileMapper">
+ 
+	
+	
+     <!-- 유저 프로필 삽입(첫1회 -->
+	 <insert id="insertuserprofile" parameterType="com.kakaolove.doit.vo.userProfileVO">
+		<![CDATA[
+		select *
+		from user_profile 
+		where user.id=#{id};
+		]]>
+	 </insert>
+	
+	 <!-- 프로필 수정  -->
+	 <update id="modifyuserProfile" parameterType="com.kakaolove.doit.vo.userProfileVO">
+		<![CDATA[
+		
+		]]>
+	 </update> 
+	 
+	 
+	 <!-- 유저 프로필 삽입(첫1회 -->
+	 <select id="selectuserProfile" resultType="com.kakaolove.doit.vo.userProfileVO">
+		<![CDATA[
+		
+		]]>
+	 </select>
+	 
+
+</mapper>

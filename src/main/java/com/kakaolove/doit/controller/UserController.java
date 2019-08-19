@@ -20,8 +20,6 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Inject
 	private customUserDetailsService service; 
-
-	
 	
     @RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale,Model model) {
@@ -48,8 +46,7 @@ public class UserController {
     	    	logger.info("가입실패");
     	    	return "login";
     		}
-    		
-       	
 	}
+	
 	
 }

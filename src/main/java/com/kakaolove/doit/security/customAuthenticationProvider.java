@@ -48,8 +48,8 @@ public class customAuthenticationProvider implements AuthenticationProvider{
         // 화면에서 입력한 이용자의 비밀번호(평문)와 DB에서 가져온 이용자의 암호화된 비밀번호를 비교한다
 
         if(! passwordEncoder.matches(user_pw, user.getPassword())){
-
             throw new BadCredentialsException("Bad credentials");
+
 
         }
 
