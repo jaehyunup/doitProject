@@ -45,21 +45,28 @@ public class ProfileController {
 	}  
     
     @RequestMapping(value = "/myprofile", method = RequestMethod.POST)
-	public String modifyProfile(userProfileVO userProfilevo,Principal principal,Locale locale,Model model) {    		
+	public String modifyProfile(userProfileVO userprofilevo,Principal principal,Locale locale,Model model) {    		
     		Authentication authentication=SecurityContextHolder.getContext().getAuthentication(); // context 인증정보 받기
-    		logger.info(userProfilevo.getId());
-    		
-    		
+    		userprofilevo.setId(authentication.getName());
+    		logger.info(userprofilevo.getId()); // x
+    		logger.info(userprofilevo.getIntroduce()); //o 
+    		logger.info(userprofilevo.getEdumajor()); // o
+    		logger.info(userprofilevo.getCertificate()); //o
+    		logger.info(userprofilevo.getNickname()); // o
+    		logger.info(userprofilevo.getPosition()); // o
+    		logger.info(userprofilevo.getSpec()); // o
+    		logger.info(userprofilevo.getFiled()); // o
+
     		
     		try{
-    			
+    			profileservice.modifyuserProfile(userprofilevo); // 리턴체크해야함
+    			return "redirect:/";
     			
     		}catch(Exception a){
-    			logger.info("알수없는 이유로 프로필 정보 수정 실패");
+    			a.printStackTrace();
     			return "redirect:/";
     		}
     		
-    	return "myprofile"; // login.jsp(Custom Login Page)
 	}  
 	
 }

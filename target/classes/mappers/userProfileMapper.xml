@@ -12,8 +12,11 @@
 	 <!-- 프로필 수정  -->
 	 <update id="modifyuserProfile" parameterType="com.kakaolove.doit.vo.userProfileVO">
 		<![CDATA[
-		
+		update user_profile
+		set introduce=#{introduce},filed=#{introduce},spec=#{spec},edumajor=#{edumajor},certificate=#{certificate},position=#{position},nickname=#{nickname}
+		where id=#{id}; 
 		]]>
+		
 	 </update> 
 	 
 	 

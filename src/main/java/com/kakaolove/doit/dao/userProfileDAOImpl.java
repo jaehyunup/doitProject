@@ -23,7 +23,7 @@ public class userProfileDAOImpl implements userProfileDAO {
 	
 	@Override
 	public int modifyuserProfile(userProfileVO userprofilevo) throws Exception {
-		return sqlSession.selectOne(namespace+".modifyuserProfile",userprofilevo);
+		return sqlSession.update(namespace+".modifyuserProfile",userprofilevo);
 	}
 
 	

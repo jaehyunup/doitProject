@@ -160,7 +160,7 @@
 	              </div>
 	              <div class="col-12 col-md-12 col-lg-7">
 	                <div class="card">
-	                  <form method="post" class="needs-validation" novalidate="">
+	                  <form method="post" class="needs-validation" novalidate="" name="modifyform" id='modifyform'>
 	                    <div class="card-header">
 	                      <h4>프로필 수정하기</h4>
 	                    </div>
@@ -181,79 +181,96 @@
 	                          </div>
 	                        </div>
 	                        <div class="row">
+	                        <div class="form-group">
+                      			<label>관심직군</label>
+                      			<select name="position" id="position" class="form-control">
+                        			<option>IT/프로그래밍</option>
+                        			<option>디자인</option>
+                        			<option>영화/영상</option>
+                        			<option>건축/토목</option>
+                        			<option>수학/과학</option>
+                        			<option>기계/전자</option>
+                        			<option>외국어</option>
+                        			<option>전기/화학</option>
+                        			<option>음악/예술</option>
+                        			<option>창업</option>
+                      		   </select>
+                    		</div>
+	                        </div>
+	                        <div class="row">
 	                          	<div class="form-group col-12 col-md-12">
 			                      <label class="form-label">보유 기술(선택)</label>
 			                      <div class="selectgroup selectgroup-pills">
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Python" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Python" class="selectgroup-input">
 			                          <span class="selectgroup-button">Python</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Java" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Java" class="selectgroup-input">
 			                          <span class="selectgroup-button">Java</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Spring" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Spring" class="selectgroup-input">
 			                          <span class="selectgroup-button">Spring</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Andorid" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Andorid" class="selectgroup-input">
 			                          <span class="selectgroup-button">Android</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Swift" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Swift" class="selectgroup-input">
 			                          <span class="selectgroup-button">Swift</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Web" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Web" class="selectgroup-input">
 			                          <span class="selectgroup-button">Web</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="App" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="App" class="selectgroup-input">
 			                          <span class="selectgroup-button">App</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Design" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Design" class="selectgroup-input">
 			                          <span class="selectgroup-button">Design</span>
 			                        </label>
 			                         <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="UX/UI" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="UX/UI" class="selectgroup-input">
 			                          <span class="selectgroup-button">UX/UI</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="iOS" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="iOS" class="selectgroup-input">
 			                          <span class="selectgroup-button">iOS</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Linux" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Linux" class="selectgroup-input">
 			                          <span class="selectgroup-button">Linux</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="프로그래밍" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="프로그래밍" class="selectgroup-input">
 			                          <span class="selectgroup-button">프로그래밍</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="C++" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="C++" class="selectgroup-input">
 			                          <span class="selectgroup-button">C++</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="C" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="C" class="selectgroup-input">
 			                          <span class="selectgroup-button">C</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Ruby" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Ruby" class="selectgroup-input">
 			                          <span class="selectgroup-button">Ruby</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Tensorflow" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Tensorflow" class="selectgroup-input">
 			                          <span class="selectgroup-button">Tensorflow</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="Keras" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" name="filed" value="Keras" class="selectgroup-input">
 			                          <span class="selectgroup-button">Keras</span>
 			                        </label>
 			                        <label class="selectgroup-item">
-			                          <input type="checkbox" name="value" value="OpenCV" class="selectgroup-input">
+			                          <input type="checkbox" id="filed" id="filed" name="filed" value="OpenCV" class="selectgroup-input">
 			                          <span class="selectgroup-button">OpenCV</span>
 			                        </label>
 			                       
@@ -265,7 +282,7 @@
 	                          <div class="form-group col-md-12 col-12">
 		                          <label>경력사항</label>
 		                          <div class="input-group">
-	                        		<input type="text" class="form-control" placeholder="" aria-label="" id="spectext">
+	                        		<input name="spec" type="text" class="form-control" placeholder="" aria-label="" id="spectext">
 	                        		<div class="input-group-append">
 	                          			<button class="btn btn-primary" type="button" value="" id="specAddBtn">추가하기</button>
 	                        		</div>
@@ -281,7 +298,7 @@
 	                          <div class="form-group col-md-12 col-12">
 		                          <label>학력/전공</label>
 		                          <div class="input-group">
-	                        		<input type="text" class="form-control" placeholder="" aria-label="" id="edumajortext">
+	                        		<input name="edumajor" type="text" class="form-control" placeholder="" aria-label="" id="edumajortext">
 	                        		<div class="input-group-append">
 	                          			<button class="btn btn-primary" type="button" id="edumajorAddBtn">추가하기</button>
 	                        		</div>
@@ -290,14 +307,15 @@
                         				학력과 전공은 학교/학과 형식으로 작성하는것이 원칙이며 이를 어길시 강제 수정됩니다.
                       			  </small>
                       			  <div class="profilesection" id="r_edumajor"></div>
-
+ s
+	
                     		  </div>
 	                        </div>
 	                        <div class="row">
 	                          <div class="form-group col-md-12 col-12">
 		                          <label>보유 자격증</label>
 		                          <div class="input-group">
-	                        		<input type="text" class="form-control" placeholder="" aria-label="" id="certificatetext">
+	                        		<input name="certificate" type="text" class="form-control" placeholder="" aria-label="" id="certificatetext">
 	                        		<div class="input-group-append">
 	                          			<button class="btn btn-primary" type="button" id="cretificateAddBtn">추가하기</button>
 	                        		</div>
@@ -330,7 +348,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="card-footer text-right">
-	                      <button class="btn btn-primary">저장</button>
+	                      <button class="btn btn-primary" onclick="goPost()">저장</button>
 	                    </div>
 	                  </form>
 	                </div>
@@ -542,46 +560,34 @@
 
 	    }
 	
-	   
+	    
 	    function goPost() {
-	    	var id="${profile.id}";
-	    	var f_intoroduc = document.getElementsByName('introduce').innerHTML;
-	    	filedlist.join(',');
-	    	speclist.join(',');
-	    	edumajorlist.join(',');
-	    	certificatelist.join(',');
-	    	
-	    	var f_nickname = document.getElementsByName('nickname').value;
-	    	
+	    	document.getElementById('spectext').value=speclist.join('_'); // 경력사항 
+	    	document.getElementById('edumajortext').value=edumajorlist.join('_'); // 학력및전공
+	    	document.getElementById('certificatetext').value=certificatelist.join('_'); // 자격증
+	    	document.getElementById('nickname').value; // 닉네임id="filed" ')	    	
+	    	document.getElementById('modifyform').submit();
+	    	document.getElementById('filed').value=filedCheck().join('_'); // 자격증 filedCheck().join('_')
+	    	console.log(document.getElementById('filed').value);
+	    	console.log(document.getElementById('filed').value);
+	    	console.log(document.getElementById('filed').value);
+	    }
+	    
+		function filedCheck(){
+		    var arrayParam = new Array();
+		    //each로 loop를 돌면서 checkbox의 check된 값을 가져와 담아준다.
 
-			
-				
-			
-			
-
-	    	 
-			private String id; // 아이디
-			private String introduce; // 자기소개
-			private String filed; // 전문분야
-			private String spec; //경력사항
-			private String edumajor;// 학력 및 전공
-			private String certificate; // 보유자격증
-			private String position; // 직군
-			private String nickname; // 닉네임
+		    $("input:checkbox[name=filed]:checked").each(function(){
+		    	arrayParam.push($(this).val());
+		    });
+		  return arrayParam;
+		}
 
 
-	    	 
-	    	 
-
-
-	    	}
+		
+</script>
 	
-		
-		
-	
-		
-	</script>
-		
+			
 	<!-- General JS Scripts -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
