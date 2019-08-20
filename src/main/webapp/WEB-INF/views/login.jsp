@@ -88,12 +88,12 @@
           <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">
-                <h1 class="mb-2 display-4 font-weight-bold">Good Mornig</h1>
-                <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5>
+                <h1 class="mb-2 display-4 font-weight-bold">청춘을 낭비하지마세요</h1>
+                <h5 class="font-weight-normal text-muted-transparent">지금 당장 doit과 함께 당신을 세상에 빛내세요 </h5>
               </div>
-              Photo by 
-              <a class="text-light bb" target="_blank" href="https://unsplash.com/photos/a8lTjWJJgLA">Justin Kauffman
-              </a> on <a class="text-light bb" target="_blank" href="https://unsplash.com">Unsplash
+              	망설이지 말고
+              <a class="text-light bb" target="_blank" href="https://unsplash.com/photos/a8lTjWJJgLA">지금당장
+              </a> on <a class="text-light bb" target="_blank" href="https://unsplash.com">do it!
               </a>
             </div>
           </div>

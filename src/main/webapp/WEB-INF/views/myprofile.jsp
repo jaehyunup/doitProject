@@ -65,7 +65,7 @@
 	      <!-- 네비바 -->
 		  <%@include file='tiles/navbar.jsp'%>
 	 		<!-- 사이드바시작 -->
-		   <div class="main-sidebar">
+		   <div class="main-sidebar d-none d-sm-block">
 	        <aside id="sidebar-wrapper">
 	          <div class="sidebar-brand">
 	            <a href="index.html">당신의 실력을 보여주세요,do it</a>
@@ -75,7 +75,7 @@
 	          </div>
 	          <ul class="sidebar-menu">
 	              <li class="menu-header">마이페이지</li>
-	              <li class="nav-item dropdown">
+	              <li class="nav-item dropdown active">
 	                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>프로필 관리</span></a>
 	              </li>
 	              <li class="menu-header">프로젝트 관리</li>
@@ -140,11 +140,11 @@
 	                    <div class="profile-widget-name" style="color:#444;">${profile.nickname} <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> ${profile.position}</div></div>
 	                    	<!-- 자기소개 -->
 	                    	<div class="profilesection" id="p_introduce" style="display:inline;">
-	                    		<div class="profile-widget-name" style="color:#333;">자기소개</div>
-	                    		
+	                    		<div class="profile-widget-name" style="font-family:'Noto Sans KR';color:#333;margin-top:12%;">자기소개</div>
+	                    		<div class="profilesection" id="p_intro" style="color:#333;padding:10px;color:#555;">${profile.introduce}</div>
 	                    	 </div>
 	                    	<!-- 관심분야 -->
-	                    	<div class="profilesection" id="p_filed"><div class="profile-widget-name" style="color:#333;">관심분야</div>
+	                    	<div class="profilesection" id="p_filed"><div class="profile-widget-name" style="color:#333;">보유기술</div>
 	                    		
 	                    	</div>
 	                    	<!-- 경력 -->
@@ -168,51 +168,169 @@
 	                        <div class="row">
 	                          <div class="form-group col-md-6 col-12">
 	                            <label>닉네임</label>
-	                            <input type="text" class="form-control" value="Ujang" required="">
+	                            <input id="nickname" name="nickname" type="text" class="form-control" value="${profile.nickname}" required="">
 	                            <div class="invalid-feedback">
-	                              Please fill in the first name
+									닉네임이 틀렸습니다
 	                            </div>
 	                          </div>
 	                          <div class="form-group col-md-6 col-12">
 	                            <label>아이디</label>
-	                            <input type="text" class="form-control" value="<%=name %>" disabled>
+	                            <input type="text" class="form-control" value="<%=name%>" disabled>
 	                            <div class="invalid-feedback">
 	                            </div>
 	                          </div>
 	                        </div>
 	                        <div class="row">
-	                          <div class="form-group col-md-7 col-12">
-	                            <label>Email</label>
-	                            <input type="email" class="form-control" value="ujang@maman.com" required="">
-	                            <div class="invalid-feedback">
-	                              Please fill in the email
-	                            </div>
-	                          </div>
-	                          <div class="form-group col-md-5 col-12">
-	                            <label>Phone</label>
-	                            <input type="tel" class="form-control" value="">
-	                          </div>
+	                          	<div class="form-group col-12 col-md-12">
+			                      <label class="form-label">보유 기술(선택)</label>
+			                      <div class="selectgroup selectgroup-pills">
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Python" class="selectgroup-input">
+			                          <span class="selectgroup-button">Python</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Java" class="selectgroup-input">
+			                          <span class="selectgroup-button">Java</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Spring" class="selectgroup-input">
+			                          <span class="selectgroup-button">Spring</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Andorid" class="selectgroup-input">
+			                          <span class="selectgroup-button">Android</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Swift" class="selectgroup-input">
+			                          <span class="selectgroup-button">Swift</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Web" class="selectgroup-input">
+			                          <span class="selectgroup-button">Web</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="App" class="selectgroup-input">
+			                          <span class="selectgroup-button">App</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Design" class="selectgroup-input">
+			                          <span class="selectgroup-button">Design</span>
+			                        </label>
+			                         <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="UX/UI" class="selectgroup-input">
+			                          <span class="selectgroup-button">UX/UI</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="iOS" class="selectgroup-input">
+			                          <span class="selectgroup-button">iOS</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Linux" class="selectgroup-input">
+			                          <span class="selectgroup-button">Linux</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="프로그래밍" class="selectgroup-input">
+			                          <span class="selectgroup-button">프로그래밍</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="C++" class="selectgroup-input">
+			                          <span class="selectgroup-button">C++</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="C" class="selectgroup-input">
+			                          <span class="selectgroup-button">C</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Ruby" class="selectgroup-input">
+			                          <span class="selectgroup-button">Ruby</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Tensorflow" class="selectgroup-input">
+			                          <span class="selectgroup-button">Tensorflow</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="Keras" class="selectgroup-input">
+			                          <span class="selectgroup-button">Keras</span>
+			                        </label>
+			                        <label class="selectgroup-item">
+			                          <input type="checkbox" name="value" value="OpenCV" class="selectgroup-input">
+			                          <span class="selectgroup-button">OpenCV</span>
+			                        </label>
+			                       
+			                      </div>
+			                    </div>
+	                        </div>
+
+	                        <div class="row">
+	                          <div class="form-group col-md-12 col-12">
+		                          <label>경력사항</label>
+		                          <div class="input-group">
+	                        		<input type="text" class="form-control" placeholder="" aria-label="" id="spectext">
+	                        		<div class="input-group-append">
+	                          			<button class="btn btn-primary" type="button" value="" id="specAddBtn">추가하기</button>
+	                        		</div>
+	                        	  </div>
+	                        	  <small id="specHelpBlock" class="form-text text-muted">
+                        				경력사항은 '회사명/직책-시작일-종료일'으로 작성하는것이 원칙이며 이를 어길시 강제 수정됩니다.
+                      			  </small>
+                      			  <div class="profilesection" id="r_spec"></div>
+                      			  
+                    		  </div>
+                    		</div>
+                    		<div class="row">
+	                          <div class="form-group col-md-12 col-12">
+		                          <label>학력/전공</label>
+		                          <div class="input-group">
+	                        		<input type="text" class="form-control" placeholder="" aria-label="" id="edumajortext">
+	                        		<div class="input-group-append">
+	                          			<button class="btn btn-primary" type="button" id="edumajorAddBtn">추가하기</button>
+	                        		</div>
+	                        	  </div>
+	                        	  <small id="edumajorHelpBlock" class="form-text text-muted">
+                        				학력과 전공은 학교/학과 형식으로 작성하는것이 원칙이며 이를 어길시 강제 수정됩니다.
+                      			  </small>
+                      			  <div class="profilesection" id="r_edumajor"></div>
+
+                    		  </div>
+	                        </div>
+	                        <div class="row">
+	                          <div class="form-group col-md-12 col-12">
+		                          <label>보유 자격증</label>
+		                          <div class="input-group">
+	                        		<input type="text" class="form-control" placeholder="" aria-label="" id="certificatetext">
+	                        		<div class="input-group-append">
+	                          			<button class="btn btn-primary" type="button" id="cretificateAddBtn">추가하기</button>
+	                        		</div>
+	                        	  </div>
+	                        	  <small id="certificateHelpBlock" class="form-text text-muted">
+                        				자격증명/취득일자/발급기관 형식으로 작성하는것이 원칙이며 이를 어길시 강제 수정됩니다.
+                      			  </small>
+                      			  <div class="profilesection" id="r_certificate"></div>
+                    		  </div>
 	                        </div>
 	                        <div class="row">
 	                          <div class="form-group col-12">
-	                            <label>Bio</label>
-	                            <textarea class="form-control summernote-simple">Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.</textarea>
+	                            <label>자기소개</label>
+	                            <textarea id="introduce" name="introduce" rows="30" style="min-height:100px;"class="form-control summernote-simple">${profile.introduce}</textarea>
 	                          </div>
 	                        </div>
 	                        <div class="row">
 	                          <div class="form-group mb-0 col-12">
 	                            <div class="custom-control custom-checkbox">
 	                              <input type="checkbox" name="remember" class="custom-control-input" id="newsletter">
-	                              <label class="custom-control-label" for="newsletter">Subscribe to newsletter</label>
+	                              <label class="custom-control-label" for="newsletter">프로필 수정에 동의합니다</label>
 	                              <div class="text-muted form-text">
-	                                You will get new information about products, offers and promotions
+	                                	당신만의 특별한 프로필, 꼼꼼하게 완성 하셨나요?
 	                              </div>
 	                            </div>
-	                          </div>
+	                          </div>    
+	                           <div class="form-group">
+			  						<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+			 	 				</div>
 	                        </div>
 	                    </div>
 	                    <div class="card-footer text-right">
-	                      <button class="btn btn-primary">Save Changes</button>
+	                      <button class="btn btn-primary">저장</button>
 	                    </div>
 	                  </form>
 	                </div>
@@ -223,30 +341,25 @@
 	      </div>
 	      <footer class="main-footer">
 	        <div class="footer-left">
-	          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+	          Copyright &copy; 2019 <div class="bullet"></div> Design By <a href="/">Doit</a>
 	        </div>
 	        <div class="footer-right">
-	          2.3.0
+	          beta.v1
 	        </div>
 	      </footer>
 	    </div>
 	  </div>
-
-
-
-      <footer class="main-footer">
-        <div class="footer-left">
-          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
-        </div>
-        <div class="footer-right">
-          2.3.0
-        </div>
-      </footer>
-	
 	<!--바디 끝-->
 	
 	<!-- custom js -->
 		<script>
+		
+		var filed="${profile.filed}"; // 관심분야
+		var spec="${profile.spec}"; // 경력사항
+		var edumajor="${profile.edumajor}"; // 학력,전공
+		var certificate="${profile.certificate}"; // 자격증	
+		
+		
 		function iscontainub(str) {
 		  return str.includes("_"); //이게 true 이면
 		}
@@ -257,20 +370,102 @@
 		
 		function checkprofile(src){
 			if(iscontainub(src)){
-				return splitcontext(src)
+				return splitcontext(src) //string 배열 리스트로 반환
 			}
 			else{
-				return src
+				return src // string형 그대로 만환
 			}
 		}
 		
+
+		function list2realVal(src){ // 리스트인지 스트링인지 모를것을 무조건 real 배열로 반환한다.
+			var arr = new Array();
+			if(Array.isArray(src)){
+				for(var i in src) {
+					arr.push(src[i]);
+				}
+			}else{
+				arr.push(src);
+			}
+		return arr;
+		}
+		
+		
+		function clear(id){
+			var targetelements=document.getElementById(id);
+			if(targetelements.hasChildNodes()){
+				while (targetelements.hasChildNodes()){
+					targetelements.removeChild(targetelements.firstChild ); 
+				}
+			}			
+		}
+		
+		function modifyTemplate(id,src){
+			var r_val=document.getElementById(id); // 들어갈 Parent 엘리먼트
+			
+			if(src instanceof Array){ //리스트이다	(항목이 여러개다, div 엘리먼트가 여러개 생성되어야함)
+				for(var i in src) {
+					var newdiv = document.createElement('div'); // 동그랗게 만들어질놈
+					newdiv.innerText=src[i];
+					p_filed.appendChild(newdiv);
+				}
+			} 
+			else{
+				var newdiv = document.createElement('button'); // 동그랗게 만들어질놈
+				
+				newdiv.setAttribute("type","button");
+				newdiv.setAttribute("class","btn btn-primary");
+				newdiv.style.display="inline-block";
+				newdiv.style.margin="5px";
+				newdiv.innerText=src;
+				newdiv.style.fontFamily ="Noto Sans KR !important";
+				newdiv.style.fontWeight="400 !important";
+				
+				p_filed.appendChild(newdiv);
+			}					
+		}
+		
+		function modifyTemplate(id,src,rname){ // 수정쪽에 원본들이 나오는곳.
+			var r_elements=document.getElementById(id);// 타겟 엘리먼트.
+			if(Array.isArray(src)){ //리스트이다	(항목이 여러개다, div 엘리먼트가 여러개 생성되어야함)
+				for(var i=0; i<src.length; i++) {
+					var tempsrc=src[i]
+					var newdiv = document.createElement('button'); // 동그랗게 만들어질놈
+					var icon = document.createElement('i');
+					icon.setAttribute("class","fas fa-eraser");
+					icon.style.color="red";
+					newdiv.setAttribute("id",rname+String(i)); //name에다가 아이디를 박는다.
+					newdiv.setAttribute("type","button");
+					newdiv.setAttribute("class","btn btn-primary");
+					newdiv.style.margin="5px";
+					newdiv.innerText=tempsrc;
+					newdiv.appendChild(icon);
+					r_elements.appendChild(newdiv);
+				}
+			}else{
+				var newdiv = document.createElement('button'); // 동그랗게 만들어질놈
+				var icon = document.createElement('i');
+				icon.setAttribute("class","fas fa-eraser");
+				icon.style.color="red";
+				newdiv.setAttribute("id",rname); //name에다가 아이디를 박는다.
+				newdiv.setAttribute("type","button");
+				newdiv.setAttribute("class","btn btn-primary");
+				newdiv.style.margin="5px";
+				newdiv.innerText=src;
+				newdiv.appendChild(icon);
+				r_elements.appendChild(newdiv);
+			}					
+		return src
+		}
+		
 		function filedTemplate(id,src){
-			var p_filed=document.getElementById(id);	
+			var p_filed=document.getElementById(id);
 			if(src instanceof Array){ //리스트이다	(항목이 여러개다, div 엘리먼트가 여러개 생성되어야함)
 				for(var i in src) {
 					var newdiv = document.createElement('button'); // 동그랗게 만들어질놈
+					var realnewdiv = document.createElement('button'); // 동그랗게 만들어질놈		
 					newdiv.setAttribute("type","button");
-					newdiv.setAttribute("class","btn btn-dark");
+					newdiv.setAttribute("class","btn btn-primary");
 					newdiv.style.display="inline-block";
 					newdiv.style.margin="5px";
 					newdiv.innerText=src[i];
@@ -281,31 +476,108 @@
 			} 
 			else{
 				var newdiv = document.createElement('button'); // 동그랗게 만들어질놈
+				
 				newdiv.setAttribute("type","button");
-				newdiv.setAttribute("class","btn btn-dark");
+				newdiv.setAttribute("class","btn btn-primary");
 				newdiv.style.display="inline-block";
 				newdiv.style.margin="5px";
-				newdiv.style.fontfamily="Noto Sans KR";
-				newdiv.style.fontweight="400";
 				newdiv.innerText=src;
+				newdiv.style.fontFamily ="Noto Sans KR !important";
+				newdiv.style.fontWeight="400 !important";
+				
 				p_filed.appendChild(newdiv);
 			}					
 		}
-		
-		
-	
-		var filed="${profile.filed}"; // 관심분야
-		var spec="${profile.spec}"; // 경력사항
-		var edumajor="${profile.edumajor}"; // 학력,전공
-		var certificate="${profile.certificate}"; // 자격증
 		
 		filedTemplate('p_filed',checkprofile(filed)); // _가 있다면 결과가 리스트, 없다면 String
 		filedTemplate('p_spec',checkprofile(spec)); // _가 있다면 결과가 리스트, 없다면 String
 		filedTemplate('p_edumajor',checkprofile(edumajor)); // _가 있다면 결과가 리스트, 없다면 String
 		filedTemplate('p_certificate',checkprofile(certificate)); // _가 있다면 결과가 리스트, 없다면 String
 		
+		
+		var speclist=list2realVal(checkprofile(spec));
+		var filedlist=list2realVal(checkprofile(filed));	
+		var edumajorlist=list2realVal(checkprofile(edumajor));
+		var certificatelist=list2realVal(checkprofile(certificate));	
+			
+		/*현재 프로필(수정)생성*/
+		modifyTemplate("r_spec",speclist,"spec_");
+		modifyTemplate("r_edumajor",edumajorlist,"edumajor_");
+		modifyTemplate("r_certificate",certificatelist,"certificate_");
+
+
+		
+		/*경력사항 인풋 버튼 이벤트리스너*/
+		var realspectext=document.getElementById('spectext');
+	    var specbtn=document.getElementById('specAddBtn')
+	    
+		/*학력사항 인풋 버튼 이벤트리스너*/
+		var realedutext=document.getElementById('edumajortext');
+	    var edumajorbtn=document.getElementById('edumajorAddBtn');
 	
+	    /*자격증 인풋 버튼 이벤트리스너*/
+		var realcerttext=document.getElementById('certificatetext');
+	    var certificatebtn=document.getElementById('cretificateAddBtn');
+	    
+	    window.onload = function(){
+			
+			 specbtn.onclick=function(){
+				 speclist.push(realspectext.value);
+					clear("r_spec");
+					modifyTemplate("r_spec",speclist,"spec_");
+			 }
+			
+	    	 edumajorbtn.onclick=function(){
+					edumajorlist.push(realedutext.value);
+					clear("r_edumajor");
+					modifyTemplate("r_edumajor",edumajorlist,"edumajor_");
+	    		
+			 }
+	    
+	    	certificatebtn.onclick=function(){
+	    			certificatelist.push(realcerttext.value);
+					clear("r_certificate");
+					modifyTemplate("r_certificate",certificatelist,"certificate_");
+	    	}
+
+	    }
 	
+	   
+	    function goPost() {
+	    	var id="${profile.id}";
+	    	var f_intoroduc = document.getElementsByName('introduce').innerHTML;
+	    	filedlist.join(',');
+	    	speclist.join(',');
+	    	edumajorlist.join(',');
+	    	certificatelist.join(',');
+	    	
+	    	var f_nickname = document.getElementsByName('nickname').value;
+	    	
+
+			
+				
+			
+			
+
+	    	 
+			private String id; // 아이디
+			private String introduce; // 자기소개
+			private String filed; // 전문분야
+			private String spec; //경력사항
+			private String edumajor;// 학력 및 전공
+			private String certificate; // 보유자격증
+			private String position; // 직군
+			private String nickname; // 닉네임
+
+
+	    	 
+	    	 
+
+
+	    	}
+	
+		
+		
 	
 		
 	</script>
