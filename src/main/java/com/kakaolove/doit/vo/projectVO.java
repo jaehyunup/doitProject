@@ -3,12 +3,15 @@ package com.kakaolove.doit.vo;
 import java.io.File;
 import java.io.FileInputStream;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class projectVO {
 	private int no;
 	private String name;
 	private String explan;
 	private int maxMember;
 	private FileInputStream img;
+	private MultipartFile uploadFile;
 	private String leader;
 	private String type;
 	
@@ -53,5 +56,11 @@ public class projectVO {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 }

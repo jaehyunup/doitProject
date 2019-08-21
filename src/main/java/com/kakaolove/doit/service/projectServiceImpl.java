@@ -15,7 +15,7 @@ public class projectServiceImpl implements projectService{
 	
 	//@Resource(name="projectDAO")
 	@Inject
-	private projectDAO dao; // 데이터 엑세스 오브젝트 (VO를 가지고실질적 데이터에 접근함)
+	private projectDAO dao; 
 	
 	
 	@Override
@@ -41,6 +41,11 @@ public class projectServiceImpl implements projectService{
 	@Override
 	public void update(projectVO vo) throws Exception {
 		dao.update(vo);
+	}
+
+	@Override
+	public List<projectVO> listten() throws Exception {
+		return dao.listten();
 	}
 
 }

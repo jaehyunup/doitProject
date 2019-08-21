@@ -8,4 +8,5 @@ public interface userProfileService {
 	int insertuserProfile(userProfileVO userprofilevo) throws Exception;
 	userProfileVO getuserProfile(String id) throws Exception;
 	int modifyuserProfile(userProfileVO userprofilevo) throws Exception;
+	
 }

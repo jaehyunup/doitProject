@@ -16,7 +16,6 @@ public class userAuthDAO{
 	
 	public customUserDetails selectUser(String id) {
 		return sqlSession.selectOne(namespace+".selectUser",id);
-		
 	}
 	
 	public int insertUser(customUserDetails userdetails) throws Exception { 
@@ -27,6 +26,11 @@ public class userAuthDAO{
 		}
 	public int deleteUser(String id) throws Exception { 
 		return sqlSession.delete(namespace+".deleteUser", id);
+	}
+	
+	public customUserDetails dupchecktUser(String id) {
+		return sqlSession.selectOne(namespace+".dupchecktUser",id);
+		
 	}
 
 

@@ -51,6 +51,9 @@ public class customUserDetailsService implements UserDetailsService {
 	}
     
 
+	public customUserDetails dupchecktUser(String id) {
+		return userAuthDAO.dupchecktUser(id);		
+	}
 }
 
 

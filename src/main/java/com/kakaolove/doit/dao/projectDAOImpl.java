@@ -31,8 +31,7 @@ public class projectDAOImpl implements projectDAO {
 
 	@Override
 	public projectVO read(Integer no) throws Exception {
-		sqlSession.selectOne(namespace+".readProject", no);
-		return null;
+		return sqlSession.selectOne(namespace+".readProject", no);
 	}
 
 	@Override
@@ -43,6 +42,11 @@ public class projectDAOImpl implements projectDAO {
 	@Override
 	public void update(projectVO vo) throws Exception {
 		sqlSession.update(namespace+".updateProject", vo);
+	}
+
+	@Override
+	public List<projectVO> listten() throws Exception {
+		return sqlSession.selectList(namespace+".listten");
 	}
 
 }

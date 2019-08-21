@@ -99,6 +99,7 @@
 	                <i class="fas fa-rocket"></i> Doit!
 	              </a>
 	            </div>
+	            </ul>
 	        </aside>
 	      </div>
 	 		

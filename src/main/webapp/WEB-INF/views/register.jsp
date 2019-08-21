@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>    
 	<head>
 		<meta charset="utf-8">
@@ -8,7 +11,9 @@
 		<!--  <link href="<c:url value="/resources/css/bootstrap/bootstrap.min.css"/>" rel="stylesheet">-->
 		<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">-->
   		<!-- CSS Libraries -->
-  		
+  		<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+		<!-- default header name is X-CSRF-TOKEN -->
+		<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
   		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   		
@@ -23,12 +28,60 @@
   		
   		
   		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  		<script type="text/javascript" src="<c:url value="/resources/js/validate.js"/>"></script>
 </head>
 
 
+<script>
+function validate() {
+	 var idcheck=new RegExp("[a-zA-Z]{1}[a-zA-Z0-9_]{4,11}$");
+    var pwCheck=new RegExp("^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}");
+	$("#id").removeAttr("disabled");
 
+ 	
+		if($('#id').val()==""){// 공백 검사
+			$("#id").val("");
+			$('#id-feedback').text("아이디를 입력해주세요");
+			$('#id').focus();
+			
+			return false;
+		}
+		
+		// 아이디 정규표현식 검사      		
+	    if(!idcheck.test($("#id").val())) {
+	    	$('#id-feedback').text("첫글자는 영문, 특수문자는 '_' 만 허용 (5~12자)");
+	     	$("#id").val("");
+	      	$("#id").focus();
+	      	return false;}
+		
+		//10~20자리 영문,숫자,특수문자를 포함하는 정규표현식
+	    if(!pwCheck.test($("#pw").val())) {
+	    	$('#pw-feedback').text("6-16자리 영문,숫자,특수문자 조합");
+	     	$("#pw").val("");
+	     	$("#pw-confirm").val("");
+	      	$("#pw").focus();
+	      	return false;
+	     }
+  	 //비밀번호 똑같은지
+	      if($("#pw").val() != ($("#pw-confirm").val())){ 
+	    	$('#pwck-feedback').text("작성한 비밀번호와 다릅니다!");
+	      	$("#pw-confirm").val("");
+	      	$("#pw-confirm").focus();
+	      return false;
+	     }         	 	
+		
+		//아이디 비밀번호 동일한지
+	   	if ($("#id").val()==($("#pw").val())) {
+	   		$('#pw-feedback').text("아이디와 비밀번호가 동일합니다");
+	        $("#pw").val("");
+	        $("#pw").focus();
+	        return false;
+	    }
+	   	
+	   	console.log("register 유효성 확인");
+	   	return true;
+}     
 
+</script>
 
 <body>
   <div id="app">
@@ -44,7 +97,7 @@
               <div class="card-header"><h4>Register</h4></div>
 
               <div class="card-body">
-                <form method="POST" action="/register" class="needs-validation" novalidate="" onsubmit="return validate()">
+                <form action="register" name="regform" method="POST" class="needs-validation" onsubmit="validate();">
                  <div class="row">
                   <div class="form-group col-6">
                     <label for="id">아이디</label>
@@ -54,7 +107,7 @@
                     </div>
                   </div>
                   <div class="form-group col-4">
-                    <a class="btn btn-primary mt-4" href="#" role="button">중복검사</a>
+                    <a id="checkBtn" class="btn btn-primary mt-4 text-white" role="button">중복검사</a>
                   </div>
                  </div>
                  
@@ -83,11 +136,11 @@
                     </div>
                   </div>
 				 <div class="form-group">
-			  		<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+			  		<input id="csrf" name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 			 	 </div>
                   <div class="form-group">
-                    <button type='submit' id="registerbtn" class="btn btn-primary btn-lg btn-block">
-                      	생성하기
+                    <button type='submit' id="registerbtn" class="btn btn-secondary btn-lg btn-block" disabled="disabled">
+                      	닉네임 중복검사가 필요합니다.
                     </button>
                   </div>
                 </form>
@@ -102,7 +155,46 @@
     </section>
   </div>
 
+<script> 
 
+$("#checkBtn").click(function() {
+		var userid =$('#id').val();
+		var data = {id: userid};
+		var token = "${_csrf.token}";
+		var header = "${_csrf.headerName}"
+		$.ajax({
+			type		: "POST",
+			url			: "idCheck",
+			data		: data,
+			dataType: 'json',
+			beforeSend	: function (xhr){
+				xhr.setRequestHeader(header, token); 
+			},
+			success	:function(data){
+				//alert(data);
+				//console.log(data);
+				if(data == 1) {
+   					$("#id-feedback").text("사용 불가능한 아이디입니다");
+   				} else {
+    				$("#checkBtn").attr("class","btn mt-4 btn-secondary");
+    				$("#checkBtn").attr("disabled","disabled");
+    				$("#checkBtn").text("사용가능한 아이디입니다.")
+    				$("#registerbtn").removeAttr("disabled");
+    				$("#registerbtn").attr("class","btn btn-primary btn-lg btn-block");	
+    				$("#id").attr("disabled","disabled");
+    				$("#registerbtn").text("가입하기")	;
+
+	   			}
+			},
+			error:function(request,status,error){
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});	
+		return;
+	});
+
+
+</script>
 
 
 

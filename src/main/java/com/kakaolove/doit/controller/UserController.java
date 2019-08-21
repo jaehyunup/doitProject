@@ -1,8 +1,12 @@
 package com.kakaolove.doit.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kakaolove.doit.security.customUserDetails;
 import com.kakaolove.doit.service.customUserDetailsService;
@@ -35,18 +40,33 @@ public class UserController {
     
     
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String create(customUserDetails userDetails,Locale locale,Model model) throws Exception {
-    		logger.info("가입시도");
+	public String create(customUserDetails userDetails,Locale locale,Model model) throws Exception {    				
     		if(service.insertUser(userDetails)==1) { //가입 성공
-    			logger.info("가입성공");
-    	    	return "registerok"; // login.jsp(Custom Login Page)
+    	    	return "login"; // login.jsp(Custom Login Page)
     		}
     		else { // 실패시
     	    	model.addAttribute("registerresult","false");
-    	    	logger.info("가입실패");
     	    	return "login";
     		}
 	}
+    
+    @ResponseBody
+    @RequestMapping(value = "/idCheck",method = RequestMethod.POST)
+    public int postIdCheck(HttpServletRequest req) throws Exception {
+     String userId = req.getParameter("id");
+     int result = 0;
+
+     if(userId.contains("&lt;script")) {
+    	 result = 1;
+     }
+     
+     customUserDetails userDetails=service.dupchecktUser(userId);
+     if(userDetails != null) {
+    	  result = 1;
+     } 
+     
+     return result;
+    }
 	
 	
 }

@@ -121,9 +121,9 @@ public class APIParse {
             
             for(int i=0;i<resultSet.size();i++) {
             	JSONObject temp=(JSONObject)resultSet.get(i); // ���� ������ N�� �����ϴ³�� Jsonobject
-            	logger.info(i+"��°---------------------------------\n");
-            	logger.info(gson.fromJson(temp.toString(), HashMap.class).toString());
-            	logger.info(i+"��° ��-------------------------------\n");
+            	//logger.info(i+"��°---------------------------------\n");
+            	//logger.info(gson.fromJson(temp.toString(), HashMap.class).toString());
+            	//logger.info(i+"��° ��-------------------------------\n");
             	resultmaplist.add(gson.fromJson(temp.toString(), HashMap.class));
             	
             }

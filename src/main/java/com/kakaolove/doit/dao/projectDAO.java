@@ -11,4 +11,6 @@ public interface projectDAO {
 	public projectVO read(Integer no) throws Exception;
 	public void delete(Integer no) throws Exception;
 	public void update(projectVO vo) throws Exception;
+	public List<projectVO> listten() throws Exception;
+
 }

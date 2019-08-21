@@ -44,24 +44,37 @@
 	          </div>
 	
 	          <div class="section-body">
-	            <h2 class="section-title"><strong>Hot</strong> 프로젝트</h2>
-	            <p class="section-lead">This page is just an example for you to create your own page.</p>
-	            <div class="card">
-	              <div class="card-header">
-	                <h4>Example Card</h4>
-	              </div>
-	              <div class="card-body">
-	                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	              </div>
-	              <div class="card-footer bg-whitesmoke">
-	                This is card footer
-	              </div>
-	            </div>
+	             <div class="section-body">
+			  	<div class="row">
+				  	<c:forEach var="project" items="${projectList}" varStatus="i">
+					  <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+		                <article class="article article-style-b">
+		                  <div class="article-header">
+		                  	<!-- image -->
+		                    <div class="article-image" data-background="../assets/img/news/img13.jpg">
+		                    </div>
+		                    <!-- trending badge-->
+		                    <c:if test="${i.index == 0}"> <!-- 숫자 비교 -->
+		                    <div class="article-badge">
+		                      <div class="article-badge-item bg-danger"><i class="fas fa-fire"></i>Trending</div>
+		                    </div>
+		                    </c:if>
+		                  </div>
+		                  <div class="article-details">
+		                    <div class="article-category">${project.type}<div class="bullet"></div>${project.maxMember}명 모집중</div>
+		                    <div class="article-title mt-3">
+		                      <h2><a href="detail?no=${project.no}">${project.name}</a></h2>
+		                    </div>
+		                    <p>${project.explan} </p>
+		                    <div class="article-cta">
+		                      <a href="detail?no=${project.no}">Read More <i class="fas fa-chevron-right"></i></a>
+		                    </div>
+		                  </div>
+		                </article>
+		              </div>
+		            </c:forEach>
+				</div>
+              </div> 
 	          </div>
 	        </section>
 	      </div>
