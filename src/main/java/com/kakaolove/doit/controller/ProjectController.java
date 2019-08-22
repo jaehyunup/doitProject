@@ -80,36 +80,11 @@ public class ProjectController {
     
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public String createPOST(@RequestParam("userid") String id, projectVO project,Model model,RedirectAttributes rttr) throws Exception{
-      project.setLeader(upservice.getuserProfile(id).getNickname());  
+       project.setLeader(upservice.getuserProfile(id).getNickname());  
         //logger.info("파일이름 :"+file.getOriginalFilename());
        // logger.info("파일크기 : "+file.getSize());
        // logger.info("컨텐트 타입 : "+file.getContentType());
-        
-      	MultipartFile mf=project.getUploadFile();
-      
-        
-        
-        logger.info("originalName: " + mf.getOriginalFilename());
-		logger.info("size: " + mf.getSize());
-		logger.info("contentType: " + mf.getContentType());
-
-		String savedName = uploadFile(mf.getOriginalFilename(), mf.getBytes());
-
-		model.addAttribute("savedName", savedName);
-
-		return "uploadResult";
-        
-        
-      
-        
-        try {
-            mf.transferTo(new File(safeFile));
-            project.setImg(safeFile);
-           } catch (IllegalStateException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-          }
+             
         
         
         service.create(project);

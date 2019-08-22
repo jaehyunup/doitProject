@@ -30,56 +30,79 @@
 
    <body>
      <div id="app">
-       <div class="main-wrapper container-fluid">
+       <div class="main-wrapper container-fluid" >
          <div class="navbar-bg"></div>
          <!-- 네비바 -->
-         <%@include file='../tiles/navbar.jsp'%>
-   
-         <!-- Main Content -->
-         <div class="main-content">
-           <section class="section">
-             <div class="section-header">
-               <h1>두잇에서 핫한 프로젝트!</h1>
-               
-             </div>
-   
-             <div class="section-body">
-               <h2 class="section-title"><strong>Hot</strong> 프로젝트</h2>
-               <p class="section-lead">This page is just an example for you to create your own page.</p>
-    <form action="create?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
-        <div class="createForm">
-            <label >제목</label>
-            <input type="text" name="name" class="createForm" placeholder = "제목" required>
-        </div>
-        <div class="createForm">
-            <label >내용</label>
-            <textarea rows="4" cols="15" name="explan" class="createForm" placeholder = "내용" required></textarea>
-        </div>
-        <div class="createForm">
-            <label >최대인원</label>
-            <input type="number" name="maxMember" class="createForm" min="1" placeholder = "최대인원" required>
-        </div>
-        <div class="createForm">
-            <label >프로젝트 종류</label>
-            <input type="radio" name="type" value="프로젝트" class="createForm" placeholder = "종류" required>프로젝트
-            <input type="radio" name="type" value="스터디" class="createForm" placeholder = "종류">스터디
-            <input type="radio" name="type" value="공모전" class="createForm" placeholder = "종류">공모전
-            <input type="radio" name="type" value="대회" class="createForm" placeholder = "종류">대회
-            <input type="radio" name="type" value="기타" class="createForm" placeholder = "종류">기타
-        </div>
-        <input type="file" name="uploadFile">
-        </div>
-        <input type="hidden" name="userid" value="<%=name %>"/>
-        <p><%=name %></p>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <div class="Formfooter">
-                <button type="submit" class="btn_button">작성하기</button>
-        </div>            
-        
-   		 </form>
-             </div>
-           </section>
-         </div>
+         <%@include file='../tiles/homenavbar.jsp'%>
+   		  
+   		  
+   		  <div class="main-content" style="padding-left:30px;">
+				<section class="section">
+					<div class="section-header">
+						<h1>프로젝트 만들기</h1>
+					</div>
+					<div class="section-body">
+					<div class="card">
+						<div class="card-body">
+						
+						<form action="create?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
+							<div class="section-title">프로젝트 제목</div>
+							<div class="form-group">
+				            	<input type="text" name="name" class="form-control" placeholder = "제목" required>
+				            </div>
+				            <div class="section-title">프로젝트 소개</div>
+				            <div class="form-group">			            
+				            	<textarea style="min-height:300px;"rows="4" cols="15" name="explan" class="form-control" placeholder = "내용" required></textarea>
+				            </div>
+				            <div class="section-title">프로젝트 최대인원</div>
+				            <div class="form-group">
+				            	<input type="number" name="maxMember" class="form-control" min="1" placeholder = "최대인원" required>
+				            </div>
+				            
+				            <div class="section-title">분야</div>
+				           	<div class="form-group">
+				           	<div class="selectgroup w-100">
+		                        <label class="selectgroup-item">
+		                          <input type="radio" name="type" value="프로젝트" class="selectgroup-input" required>
+		                          <span class="selectgroup-button">프로젝트</span>
+		                        </label>
+		                        <label class="selectgroup-item">
+		                          <input type="radio" name="type" value="스터디" class="selectgroup-input">
+		                          <span class="selectgroup-button">스터디</span>
+		                        </label>
+		                        <label class="selectgroup-item">
+		                          <input type="radio" name="type" value="공모전" class="selectgroup-input">
+		                          <span class="selectgroup-button">공모전</span>
+		                        </label>
+		                        <label class="selectgroup-item">
+		                          <input type="radio" name="type" value="대회/경연" class="selectgroup-input">
+		                          <span class="selectgroup-button">대회/경연</span>
+		                        </label>
+		                        <label class="selectgroup-item">
+		                          <input type="radio" name="tpye" value="기타" class="selectgroup-input">
+		                          <span class="selectgroup-button">기타</span>
+		                        </label>
+		                      </div>
+				           	</div>
+				           	<div class="section-title">이제 차기 팀원의 신청을 기다리세요!</div>
+				           	<div class="form-group">
+				           		<input type="hidden" name="userid" value="<%=name %>"/>
+				       			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				            	<button type="submit" class="btn btn-primary btn-lg">게시하기</button>	
+				           	</div>				            	            		        		
+					    </form>
+						
+						
+						</div>
+					</div>
+					
+					</div>
+				</section>						
+		</div>		
+         
+         
+         
+         
          <footer class="main-footer">
            <div class="footer-left">
              Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
@@ -88,8 +111,8 @@
              2.3.0
            </div>
          </footer>
-       </div>
      </div>
+  </div>
       
       
       
