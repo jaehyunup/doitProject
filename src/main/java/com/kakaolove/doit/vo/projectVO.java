@@ -10,11 +10,17 @@ public class projectVO {
 	private String name;
 	private String explan;
 	private int maxMember;
-	private FileInputStream img;
+	private String img;
 	private MultipartFile uploadFile;
 	private String leader;
 	private String type;
 	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -39,12 +45,7 @@ public class projectVO {
 	public void setMaxMember(int maxMember) {
 		this.maxMember = maxMember;
 	}
-	public FileInputStream getImg() {
-		return img;
-	}
-	public void setImg(FileInputStream img) {
-		this.img = img;
-	}
+
 	public String getLeader() {
 		return leader;
 	}

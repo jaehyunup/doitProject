@@ -20,9 +20,10 @@ public class projectDAOImpl implements projectDAO {
 	private static String namespace = "com.kakaolove.doit.mappers.projectMapper";
 	
 	@Override
-	public void create(projectVO vo) throws Exception {
-		sqlSession.insert(namespace+".insertProject", vo);
-	}
+	   public void create(projectVO vo) throws Exception {
+	      sqlSession.insert(namespace+".insertProject", vo);
+	      sqlSession.insert(namespace+".insertProjectSub", vo);
+	   }
 
 	@Override
 	public List<projectVO> listAll() throws Exception {

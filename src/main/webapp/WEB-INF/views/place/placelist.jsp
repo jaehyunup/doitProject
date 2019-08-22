@@ -102,12 +102,13 @@
                 </div>
               	</div>
 	          </div>
-	          <form action="./place" method="POST">
+	          <form action="place" method="POST">
 			       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			       <input type="hidden" name="page" value="${pagenum }"> 
+			       <input type="hidden" name="page" value="${pagenum}"> 
 			       <input class="btn btn-lg btn-info" type="submit" name="next" value="첫페이지로"> 
-			       <input class="btn btn-lg btn-primary" type="submit" name="next" value="< 이전페이지" style="margin-left:10px;margin-right:10px;">
-			       <input class="btn btn-lg btn-primary" type="submit" name="next" value="다음페이지 >"style="margin-left:10px;margin-right:10px;">
+			       <input class="btn btn-lg btn-primary" type="submit" name="next" value="이전페이지" style="margin-left:10px;margin-right:10px;">
+			       	<input class="btn btn-lg btn-primary" type="button"  value="${pagenum}페이지" style="margin-left:10px;margin-right:10px;">	       
+			       <input class="btn btn-lg btn-primary" type="submit" name="next" value="다음페이지"style="margin-left:10px;margin-right:10px;">
 			   </form>		
 			  <div class="section-body">
 			  	<div class="row">

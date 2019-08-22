@@ -39,7 +39,6 @@
 	
 	<body>
 	<nav class="navbar navbar-expand-lg main-navbar">
-	        <a href="/doit" class="navbar-brand sidebar-gone-hide"><strong>DOIT!</strong></a>
 	        <div class="navbar-nav">
 	          <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
 	        </div>
@@ -106,8 +105,7 @@
 	                <a href="#">
 	                  <div class="search-icon bg-danger text-white mr-3">
 	                    <i class="fas fa-code"></i>
-	                  </div>
-	                   S/W개발보안 대회
+	                  </div>소개딩 - S/W개발보안 대회
 	                </a>
 	              </div>
 	              <div class="search-item">

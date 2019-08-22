@@ -25,18 +25,55 @@
   		
 </head>
 		
+		<script>
+		function deferVideo() {
+
+		    //defer html5 video loading
+		  $("video source").each(function() {
+		    var sourceFile = $(this).attr("data-src");
+		    $(this).attr("src", sourceFile);
+		    var video = this.parentElement;
+		    video.load();
+		    // uncomment if video is not autoplay
+		    //video.play();
+		  });
+
+		}
+		window.onload = deferVideo;
+		</script>
 
 
 
 	<body>
 	  <div id="app">
-	    <div class="main-wrapper container-fluid">
+	    <div class="main-wrapper container-fluid" style="padding-left:0px;padding-right:0px;">
 	      <div class="navbar-bg"></div>
 	      <!-- 네비바 -->
-	      <%@include file='tiles/navbar.jsp'%>
-	
+	      <%@include file='tiles/homenavbar.jsp'%>
+			
+		  <!-- 점보트론 -->
+		  	<div class="jumbotron jumbotron-fluid" style="height:100%;">			
+					<video autoplay muted loop poster="">    
+					    <source src="" data-src="<c:url value="/resources/videos/slider2.mp4"/>" type="video/mp4" >
+					</video>			
+					  <div class="container text-white pt-5">
+					  	<hr class="my-5">
+					    <h1 class="slider-text1 text-white">더이상 생각만 하지 마세요. </h1>
+					    <hr class="my-5">
+					    <p class="slider-text2">Doit</p>
+					    <hr class="my-4">
+					    <p class="pl-2 slider-text3">당신의 꿈을 이루어줄 팀 네트워킹 플랫폼</p>
+					    <hr class="my-4">
+					    <a class="ml-2 btn btn-primary btn-lg" href="#" role="button">로그인</a>
+					    <a class="ml-2 btn btn-info btn-lg" href="#" role="button">회원가입</a>			
+					    			
+					  </div>
+					  <!-- /.container -->
+					</div>
+					<!-- /.jumbotron -->
+	     
 	      <!-- Main Content -->
-	      <div class="main-content">
+	      <div class="main-content" style="padding-left:30px;">
 	        <section class="section">
 	          <div class="section-header">
 	            <h1>두잇에서 핫한 프로젝트!</h1>

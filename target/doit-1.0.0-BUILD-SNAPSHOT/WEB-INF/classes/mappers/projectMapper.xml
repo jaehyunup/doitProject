@@ -6,7 +6,7 @@
  
     <!-- 프로젝트 추가하기 -->
     <insert id="insertProject">
-        insert into project (name, explan, maxmember, type) values(#{name},#{explan},#{maxMember},#{type})
+        insert into project (name, explan, maxmember, img, type) values(#{name},#{explan},#{maxMember},#{img},#{type})
     </insert>
     
     
@@ -15,6 +15,16 @@
     <![CDATA[
         select no, name, maxmember, leader, type from project
         order by no DESC
+    ]]>
+    </select>
+    
+    <!-- 프로젝트 리스트10개보기 -->
+    <select id="listten" resultType="com.kakaolove.doit.vo.projectVO">
+    <![CDATA[
+        select no, name, maxmember, leader, type 
+        from project
+        order by no DESC
+        LIMIT 10;
     ]]>
     </select>
     

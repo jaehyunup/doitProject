@@ -48,10 +48,10 @@
 	            <i class="fas fa-ellipsis-v"></i>
 	          </a>
 	          <ul class="navbar-nav">
-	            <li class="nav-item active"><a href="#" class="nav-link">프로젝트</a></li>
-	            <li class="nav-item"><a href="#" class="nav-link">스페이스 클라우드</a></li>
-	            <li class="nav-item"><a href="#" class="nav-link">마이페이지</a></li>
-	            <li class="nav-item"><a href="#" class="nav-link">내 프로젝트</a></li>
+	            <li class="nav-item active"><a href="project" class="nav-link">프로젝트</a></li>
+	            <li class="nav-item"><a href="place" class="nav-link">스페이스 클라우드</a></li>
+	            <li class="nav-item"><a href="myprofile" class="nav-link">마이페이지</a></li>
+	            <li class="nav-item"><a href="myproject" class="nav-link">내 프로젝트</a></li>
 	          </ul>
 	        </div>
 	        <form class="form-inline ml-auto">
@@ -106,8 +106,7 @@
 	                <a href="#">
 	                  <div class="search-icon bg-danger text-white mr-3">
 	                    <i class="fas fa-code"></i>
-	                  </div>
-	                   S/W개발보안 대회
+	                  </div>소개딩 - S/W개발보안 대회
 	                </a>
 	              </div>
 	              <div class="search-item">
@@ -248,7 +247,7 @@
 	            </div>
 	          </li>
 	          
-	          <!-- 계정정보 -->
+	           <!-- 계정정보 -->
 	          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 	           <sec:authorize access="isAnonymous()">
                 <div class="d-sm-none d-lg-inline-block">두잇에 로그인하세요!</div></a>

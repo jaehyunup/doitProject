@@ -25,18 +25,55 @@
   		
 </head>
 		
+		<script>
+		function deferVideo() {
+
+		    //defer html5 video loading
+		  $("video source").each(function() {
+		    var sourceFile = $(this).attr("data-src");
+		    $(this).attr("src", sourceFile);
+		    var video = this.parentElement;
+		    video.load();
+		    // uncomment if video is not autoplay
+		    //video.play();
+		  });
+
+		}
+		window.onload = deferVideo;
+		</script>
 
 
 
 	<body>
 	  <div id="app">
-	    <div class="main-wrapper container-fluid">
+	    <div class="main-wrapper container-fluid" style="padding-left:0px;padding-right:0px;">
 	      <div class="navbar-bg"></div>
 	      <!-- 네비바 -->
-	      <%@include file='tiles/navbar.jsp'%>
-	
+	      <%@include file='tiles/homenavbar.jsp'%>
+			
+		  <!-- 점보트론 -->
+		  	<div class="jumbotron jumbotron-fluid" style="height:100%;">			
+					<video autoplay muted loop poster="">    
+					    <source src="" data-src="<c:url value="/resources/videos/slider2.mp4"/>" type="video/mp4" >
+					</video>			
+					  <div class="container text-white pt-5">
+					  	<hr class="my-5">
+					    <h1 class="slider-text1 text-white">더이상 생각만 하지 마세요. </h1>
+					    <hr class="my-5">
+					    <p class="slider-text2">Doit</p>
+					    <hr class="my-4">
+					    <p class="pl-2 slider-text3">당신의 꿈을 이루어줄 팀 네트워킹 플랫폼</p>
+					    <hr class="my-4">
+					    <a class="ml-2 btn btn-primary btn-lg" href="#" role="button">로그인</a>
+					    <a class="ml-2 btn btn-info btn-lg" href="#" role="button">회원가입</a>			
+					    			
+					  </div>
+					  <!-- /.container -->
+					</div>
+					<!-- /.jumbotron -->
+	     
 	      <!-- Main Content -->
-	      <div class="main-content">
+	      <div class="main-content" style="padding-left:30px;">
 	        <section class="section">
 	          <div class="section-header">
 	            <h1>두잇에서 핫한 프로젝트!</h1>
@@ -44,24 +81,37 @@
 	          </div>
 	
 	          <div class="section-body">
-	            <h2 class="section-title"><strong>Hot</strong> 프로젝트</h2>
-	            <p class="section-lead">This page is just an example for you to create your own page.</p>
-	            <div class="card">
-	              <div class="card-header">
-	                <h4>Example Card</h4>
-	              </div>
-	              <div class="card-body">
-	                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	              </div>
-	              <div class="card-footer bg-whitesmoke">
-	                This is card footer
-	              </div>
-	            </div>
+	             <div class="section-body">
+			  	<div class="row">
+				  	<c:forEach var="project" items="${projectList}" varStatus="i">
+					  <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+		                <article class="article article-style-b">
+		                  <div class="article-header">
+		                  	<!-- image -->
+		                    <div class="article-image" data-background="../assets/img/news/img13.jpg">
+		                    </div>
+		                    <!-- trending badge-->
+		                    <c:if test="${i.index == 0}"> <!-- 숫자 비교 -->
+		                    <div class="article-badge">
+		                      <div class="article-badge-item bg-danger"><i class="fas fa-fire"></i>Trending</div>
+		                    </div>
+		                    </c:if>
+		                  </div>
+		                  <div class="article-details">
+		                    <div class="article-category">${project.type}<div class="bullet"></div>${project.maxMember}명 모집중</div>
+		                    <div class="article-title mt-3">
+		                      <h2><a href="detail?no=${project.no}">${project.name}</a></h2>
+		                    </div>
+		                    <p>${project.explan} </p>
+		                    <div class="article-cta">
+		                      <a href="detail?no=${project.no}">Read More <i class="fas fa-chevron-right"></i></a>
+		                    </div>
+		                  </div>
+		                </article>
+		              </div>
+		            </c:forEach>
+				</div>
+              </div> 
 	          </div>
 	        </section>
 	      </div>
