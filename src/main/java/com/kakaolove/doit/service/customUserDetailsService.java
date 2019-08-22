@@ -37,7 +37,8 @@ public class customUserDetailsService implements UserDetailsService {
     	customUserDetails userdetailsAuth=new customUserDetails();
     	/* 중요정보 암호화 */
     	userdetailsAuth.setId(userdetails.getId());
-    	userdetailsAuth.setPw(passwordEncoder.encode(userdetails.getPw()));    	
+    	userdetailsAuth.setPw(passwordEncoder.encode(userdetails.getPw())); 
+    	userdetailsAuth.setNickname(userdetails.getNickname());
     	int ret=userAuthDAO.insertUser(userdetailsAuth);
     	return ret;
     }

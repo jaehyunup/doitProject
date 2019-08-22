@@ -123,9 +123,9 @@
 	        <ul class="navbar-nav navbar-right">
 	          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
 	            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-	              <div class="dropdown-header">Messages
+	              <div class="dropdown-header">메세지
 	                <div class="float-right">
-	                  <a href="#">Mark All As Read</a>
+	                  <a href="#">모두보기</a>
 	                </div>
 	              </div>
 	              <div class="dropdown-list-content dropdown-list-message">
@@ -189,9 +189,9 @@
 	          </li>
 	          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
 	            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-	              <div class="dropdown-header">Notifications
+	              <div class="dropdown-header">알림
 	                <div class="float-right">
-	                  <a href="#">Mark All As Read</a>
+	                  <a href="#">모든알림삭제</a>
 	                </div>
 	              </div>
 	              <div class="dropdown-list-content dropdown-list-icons">
@@ -200,7 +200,7 @@
 	                    <i class="fas fa-code"></i>
 	                  </div>
 	                  <div class="dropdown-item-desc">
-	                    Template update is available now!
+	                    새로운 프로젝트 팀원이 생겼습니다!
 	                    <div class="time text-primary">2 Min Ago</div>
 	                  </div>
 	                </a>
@@ -209,7 +209,7 @@
 	                    <i class="far fa-user"></i>
 	                  </div>
 	                  <div class="dropdown-item-desc">
-	                    <b>You</b> and <b>Dedik Sugiharto</b> are now friends
+	                    <b>당신의팀원</b> <b>정영훈</b> 씨가 팀을 탈퇴하셨습니다 
 	                    <div class="time">10 Hours Ago</div>
 	                  </div>
 	                </a>
@@ -218,28 +218,11 @@
 	                    <i class="fas fa-check"></i>
 	                  </div>
 	                  <div class="dropdown-item-desc">
-	                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+	                    <b>오늘의 날씨는</b> 아주 맑습니다
 	                    <div class="time">12 Hours Ago</div>
 	                  </div>
 	                </a>
-	                <a href="#" class="dropdown-item">
-	                  <div class="dropdown-item-icon bg-danger text-white">
-	                    <i class="fas fa-exclamation-triangle"></i>
-	                  </div>
-	                  <div class="dropdown-item-desc">
-	                    Low disk space. Let's clean it!
-	                    <div class="time">17 Hours Ago</div>
-	                  </div>
-	                </a>
-	                <a href="#" class="dropdown-item">
-	                  <div class="dropdown-item-icon bg-info text-white">
-	                    <i class="fas fa-bell"></i>
-	                  </div>
-	                  <div class="dropdown-item-desc">
-	                    Welcome to Stisla template!
-	                    <div class="time">Yesterday</div>
-	                  </div>
-	                </a>
+	                
 	              </div>
 	              <div class="dropdown-footer text-center">
 	                <a href="#">View All <i class="fas fa-chevron-right"></i></a>

@@ -76,17 +76,17 @@
 	          <ul class="sidebar-menu">
 	              <li class="menu-header">마이페이지</li>
 	              <li class="nav-item dropdown active">
-	                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>프로필 관리</span></a>
+	                <a href="myprofile" class="nav-link"><i class="fas fa-fire"></i><span>프로필 관리</span></a>
 	              </li>
 	              <li class="menu-header">프로젝트 관리</li>
 	              <li class="nav-item dropdown">
-	                <a href="#" class="nav-link" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>프로젝트 관리</span></a>
+	                <a href="myproject" class="nav-link" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>프로젝트 관리</span></a>
 	              </li>
 	              <li>
 	              	<a class="nav-item dropdown" href="#"><i class="far fa-square"></i> <span>프로젝트 생성</span></a>
 	              </li>
 	              <li class="nav-item dropdown">
-	                <a href="#" class="nav-link"><i class="fas fa-th"></i> <span>완료된 프로젝트</span></a>
+	                <a href="myproject" class="nav-link"><i class="fas fa-th"></i> <span>완료된 프로젝트</span></a>
 	                
 	              </li>	             
 	              <li class="menu-header">커뮤니티</li>
@@ -127,7 +127,7 @@
 		                <article class="article article-style-b">
 		                  <div class="article-header">
 		                  	<!-- image -->
-		                    <div class="article-image" data-background="../assets/img/news/img13.jpg">
+		                    <div class="article-image" data-background="<c:url value='resources/other/theme/assets/img/news/img13.jpg'/>">
 		                    </div>
 		                    <!-- trending badge-->
 		                    <c:if test="${i.index == 0}"> <!-- 숫자 비교 -->

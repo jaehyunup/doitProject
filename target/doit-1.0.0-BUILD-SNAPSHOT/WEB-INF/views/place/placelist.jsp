@@ -102,12 +102,13 @@
                 </div>
               	</div>
 	          </div>
-	          <form action="./place" method="POST">
+	          <form action="place" method="POST">
 			       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			       <input type="hidden" name="page" value="${pagenum }"> 
+			       <input type="hidden" name="page" value="${pagenum}"> 
 			       <input class="btn btn-lg btn-info" type="submit" name="next" value="첫페이지로"> 
-			       <input class="btn btn-lg btn-primary" type="submit" name="next" value="< 이전페이지" style="margin-left:10px;margin-right:10px;">
-			       <input class="btn btn-lg btn-primary" type="submit" name="next" value="다음페이지 >"style="margin-left:10px;margin-right:10px;">
+			       <input class="btn btn-lg btn-primary" type="submit" name="next" value="이전페이지" style="margin-left:10px;margin-right:10px;">
+			       	<input class="btn btn-lg btn-primary" type="button"  value="${pagenum}페이지" style="margin-left:10px;margin-right:10px;">	       
+			       <input class="btn btn-lg btn-primary" type="submit" name="next" value="다음페이지"style="margin-left:10px;margin-right:10px;">
 			   </form>		
 			  <div class="section-body">
 			  	<div class="row">
@@ -134,6 +135,10 @@
 						      <p> 결제방법 : <b>${place['PAYATNM']} </b></p>
 						      <p> 서비스형태 : <b>${place['MAXCLASSNM']} </b></p>
 						      <p> 장소분류 : <b>${place['MINCLASSNM']} </b></p>
+						      <p> 장소분류 : <b>${place['X']} </b></p>
+						      <p> 장소분류 : <b>${place['Y']} </b></p>
+						      
+						      
 		                    <div class="article-cta">
 		                      <a href="${place['SVCURL']}" class="btn btn-danger">예약 하기 <i class="fas fa-chevron-right"></i></a>
 		                    </div>

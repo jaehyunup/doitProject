@@ -50,4 +50,14 @@ public class projectDAOImpl implements projectDAO {
 		return sqlSession.selectList(namespace+".listten");
 	}
 
+	@Override
+	public List<projectVO> myProjectList(String nickname) throws Exception {
+		return sqlSession.selectList(namespace+".myProjectList",nickname);
+	}
+
+	@Override
+	public String getWaitList(int no) throws Exception {
+		return sqlSession.selectOne(namespace+".getWaitList",no);
+	}
+
 }

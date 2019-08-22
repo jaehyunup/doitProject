@@ -48,4 +48,16 @@ public class projectServiceImpl implements projectService{
 		return dao.listten();
 	}
 
+	@Override
+	public List<projectVO> myProjectList(String nickname) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.myProjectList(nickname);
+	}
+
+	@Override
+	public String getWaitList(int no) throws Exception {
+		
+		return dao.getWaitList(no);
+	}
+
 }

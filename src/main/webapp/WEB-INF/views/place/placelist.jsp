@@ -135,6 +135,10 @@
 						      <p> 결제방법 : <b>${place['PAYATNM']} </b></p>
 						      <p> 서비스형태 : <b>${place['MAXCLASSNM']} </b></p>
 						      <p> 장소분류 : <b>${place['MINCLASSNM']} </b></p>
+						      <p> 장소분류 : <b>${place['X']} </b></p>
+						      <p> 장소분류 : <b>${place['Y']} </b></p>
+						      
+						      
 		                    <div class="article-cta">
 		                      <a href="${place['SVCURL']}" class="btn btn-danger">예약 하기 <i class="fas fa-chevron-right"></i></a>
 		                    </div>

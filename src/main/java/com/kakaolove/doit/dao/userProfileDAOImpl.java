@@ -29,7 +29,6 @@ public class userProfileDAOImpl implements userProfileDAO {
 	
 	@Override
 	public userProfileVO getuserProfile(String id) throws Exception {
-		System.out.println("유저프로필vo DAO:"+id);
 		return sqlSession.selectOne(namespace+".selectuserProfile",id);
 	}
 

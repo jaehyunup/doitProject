@@ -54,22 +54,22 @@
 	          <ul class="sidebar-menu">
 	              <li class="menu-header">마이페이지</li>
 	              <li class="nav-item dropdown">
-	                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>프로필 관리</span></a>
+	                <a href="myprofile" class="nav-link"><i class="fas fa-fire"></i><span>프로필 관리</span></a>
 	              </li>
 	              <li class="menu-header">프로젝트 관리</li>
 	              <li class="nav-item dropdown active">
-	                <a href="#" class="nav-link " data-toggle="dropdown"><i class="fas fa-columns"></i> <span>내 프로젝트</span></a>
+	                <a href="myproject" class="nav-link " data-toggle="dropdown"><i class="fas fa-columns"></i> <span>내 프로젝트</span></a>
 	              </li>
 	              <li>
-	              	<a class="nav-item dropdown" href="#"><i class="far fa-square"></i> <span>프로젝트 생성</span></a>
+	              	<a class="nav-item dropdown" href="create"><i class="far fa-square"></i> <span>프로젝트 생성</span></a>
 	              </li>
 	              <li class="nav-item dropdown">
-	                <a href="#" class="nav-link"><i class="fas fa-th"></i> <span>완료된 프로젝트</span></a>
+	                <a href="myproject" class="nav-link"><i class="fas fa-th"></i> <span>완료된 프로젝트</span></a>
 	                
 	              </li>	             
 	              <li class="menu-header">커뮤니티</li>
 	              <li class="nav-item dropdown">
-	                <a href="#" class="nav-link"><i class="far fa-user"></i> <span>계정관리</span></a>
+	                <a href="myprofile" class="nav-link"><i class="far fa-user"></i> <span>계정관리</span></a>
 	              </li>
 	              
 	            <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
@@ -87,20 +87,16 @@
 	      <div class="main-content">
 	        <section class="section">
 	          <div class="section-header">
-	            <h1>Posts</h1>
+	            <h1>프로젝트 관리</h1>
 	            <div class="section-header-button">
-	              <a href="features-post-create.html" class="btn btn-primary">Add New</a>
+	              <a href="features-post-create.html" class="btn btn-primary">프로젝트 추가</a>
 	            </div>
-	            <div class="section-header-breadcrumb">
-	              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-	              <div class="breadcrumb-item"><a href="#">Posts</a></div>
-	              <div class="breadcrumb-item">All Posts</div>
-	            </div>
+	            
 	          </div>
 	          <div class="section-body">
-	            <h2 class="section-title">Posts</h2>
+	            <h2 class="section-title">마이 프로젝트</h2>
 	            <p class="section-lead">
-	              You can manage all posts, such as editing, deleting and more.
+	            	더욱 체계적으로 프로젝트를 관리해보세요
 	            </p>
 	
 	            <div class="row">
@@ -109,16 +105,19 @@
 	                  <div class="card-body">
 	                    <ul class="nav nav-pills">
 	                      <li class="nav-item">
-	                        <a class="nav-link active" href="#">All <span class="badge badge-white">5</span></a>
+	                        <a class="nav-link active" href="#">창작프로젝트<span class="badge badge-white">5</span></a>
 	                      </li>
 	                      <li class="nav-item">
-	                        <a class="nav-link" href="#">Draft <span class="badge badge-primary">1</span></a>
+	                        <a class="nav-link" href="#">스터디 <span class="badge badge-primary">1</span></a>
 	                      </li>
 	                      <li class="nav-item">
-	                        <a class="nav-link" href="#">Pending <span class="badge badge-primary">1</span></a>
+	                        <a class="nav-link" href="#">공모전 <span class="badge badge-primary">1</span></a>
 	                      </li>
 	                      <li class="nav-item">
-	                        <a class="nav-link" href="#">Trash <span class="badge badge-primary">0</span></a>
+	                        <a class="nav-link" href="#">대회/경연 <span class="badge badge-primary">0</span></a>
+	                      </li>
+	                      <li class="nav-item">
+	                        <a class="nav-link" href="#">기타 <span class="badge badge-primary">0</span></a>
 	                      </li>
 	                    </ul>
 	                  </div>
@@ -129,15 +128,15 @@
 	              <div class="col-12">
 	                <div class="card">
 	                  <div class="card-header">
-	                    <h4>All Posts</h4>
+	                    <h4>모든 협업목록</h4>
 	                  </div>
 	                  <div class="card-body">
 	                    <div class="float-left">
 	                      <select class="form-control selectric">
-	                        <option>Action For Selected</option>
-	                        <option>Move to Draft</option>
-	                        <option>Move to Pending</option>
-	                        <option>Delete Pemanently</option>
+	                        <option>선택된 목록만</option>
+	                        <option>이동 목록</option>
+	                        <option>선택목록 제외</option>
+	                        <option>선택 삭제</option>
 	                      </select>
 	                    </div>
 	                    <div class="float-right">
@@ -162,12 +161,13 @@
 	                              <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
 	                            </div>
 	                          </th>
-	                          <th>Title</th>
-	                          <th>Category</th>
-	                          <th>Author</th>
-	                          <th>Created At</th>
-	                          <th>Status</th>
+	                          <th>협업(프로젝트)명</th>
+	                          <th>카테고리</th>
+	                          <th>팀장</th>
+	                          <th>생성시기</th>
+	                          <th>상태</th>
 	                        </tr>
+	                        <c:forEach var="project" items="${plist}" varStatus="status">
 	                        <tr>
 	                          <td>
 	                            <div class="custom-checkbox custom-control">
@@ -175,139 +175,30 @@
 	                              <label for="checkbox-2" class="custom-control-label">&nbsp;</label>
 	                            </div>
 	                          </td>
-	                          <td>Laravel 5 Tutorial: Introduction
+	                          <!-- 1열 -->
+	                          <td>
+	                          	<p style="padding-top:10%;">${project.name}</p>
 	                            <div class="table-links">
-	                              <a href="#">View</a>
+	                              <a href="#">보기</a>
 	                              <div class="bullet"></div>
-	                              <a href="#">Edit</a>
+	                              <a href="#">수정</a>
 	                              <div class="bullet"></div>
-	                              <a href="#" class="text-danger">Trash</a>
+	                              <a href="#" class="text-danger">버리기</a>
 	                            </div>
 	                          </td>
 	                          <td>
-	                            <a href="#">Web Developer</a>,
-	                            <a href="#">Tutorial</a>
+	                            <a href="#">${project.type}</a>
 	                          </td>
 	                          <td>
 	                            <a href="#">
-	                              <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
+	                              <img alt="image" src="<c:url value="/resources/other/theme/assets/img/avatar/avatar-5.png"/>" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">${project.leader}</div>
 	                            </a>
 	                          </td>
-	                          <td>2018-01-20</td>
-	                          <td><div class="badge badge-primary">Published</div></td>
+	                          <td>2019-08-23</td>
+	                          <td><div class="badge badge-primary">진행중</div></td>
 	                        </tr>
-	                        <tr>
-	                          <td>
-	                            <div class="custom-checkbox custom-control">
-	                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-3">
-	                              <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
-	                            </div>
-	                          </td>
-	                          <td>Laravel 5 Tutorial: Installing
-	                            <div class="table-links">
-	                              <a href="#">View</a>
-	                              <div class="bullet"></div>
-	                              <a href="#">Edit</a>
-	                              <div class="bullet"></div>
-	                              <a href="#" class="text-danger">Trash</a>
-	                            </div>
-	                          </td>
-	                          <td>
-	                            <a href="#">Web Developer</a>,
-	                            <a href="#">Tutorial</a>
-	                          </td>
-	                          <td>
-	                            <a href="#">
-	                              <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
-	                            </a>
-	                          </td>
-	                          <td>2018-01-20</td>
-	                          <td><div class="badge badge-primary">Published</div></td>
-	                        </tr>
-	                        <tr>
-	                          <td>
-	                            <div class="custom-checkbox custom-control">
-	                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-4">
-	                              <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
-	                            </div>
-	                          </td>
-	                          <td>Laravel 5 Tutorial: MVC
-	                            <div class="table-links">
-	                              <a href="#">View</a>
-	                              <div class="bullet"></div>
-	                              <a href="#">Edit</a>
-	                              <div class="bullet"></div>
-	                              <a href="#" class="text-danger">Trash</a>
-	                            </div>
-	                          </td>
-	                          <td>
-	                            <a href="#">Web Developer</a>,
-	                            <a href="#">Tutorial</a>
-	                          </td>
-	                          <td>
-	                            <a href="#">
-	                              <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
-	                            </a>
-	                          </td>
-	                          <td>2018-01-20</td>
-	                          <td><div class="badge badge-primary">Published</div></td>
-	                        </tr>
-	                        <tr>
-	                          <td>
-	                            <div class="custom-checkbox custom-control">
-	                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-5">
-	                              <label for="checkbox-5" class="custom-control-label">&nbsp;</label>
-	                            </div>
-	                          </td>
-	                          <td>Laravel 5 Tutorial: CRUD
-	                            <div class="table-links">
-	                              <a href="#">View</a>
-	                              <div class="bullet"></div>
-	                              <a href="#">Edit</a>
-	                              <div class="bullet"></div>
-	                              <a href="#" class="text-danger">Trash</a>
-	                            </div>
-	                          </td>
-	                          <td>
-	                            <a href="#">Web Developer</a>,
-	                            <a href="#">Tutorial</a>
-	                          </td>
-	                          <td>
-	                            <a href="#">
-	                              <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
-	                            </a>
-	                          </td>
-	                          <td>2018-01-20</td>
-	                          <td><div class="badge badge-danger">Draft</div></td>
-	                        </tr>
-	                        <tr>
-	                          <td>
-	                            <div class="custom-checkbox custom-control">
-	                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
-	                              <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
-	                            </div>
-	                          </td>
-	                          <td>Laravel 5 Tutorial: Deployment
-	                            <div class="table-links">
-	                              <a href="#">View</a>
-	                              <div class="bullet"></div>
-	                              <a href="#">Edit</a>
-	                              <div class="bullet"></div>
-	                              <a href="#" class="text-danger">Trash</a>
-	                            </div>
-	                          </td>
-	                          <td>
-	                            <a href="#">Web Developer</a>,
-	                            <a href="#">Tutorial</a>
-	                          </td>
-	                          <td>
-	                            <a href="#">
-	                              <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
-	                            </a>
-	                          </td>
-	                          <td>2018-01-20</td>
-	                          <td><div class="badge badge-warning">Pending</div></td>
-	                        </tr>
+	                        </c:forEach>
+	                        <!-- 1열끝 -->	         
 	                      </table>
 	                    </div>
 	                    <div class="float-right">

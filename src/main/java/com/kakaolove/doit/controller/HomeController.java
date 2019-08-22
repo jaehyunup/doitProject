@@ -31,5 +31,7 @@ public class HomeController {
     public String homere(Locale locale, Model model) {    	
         return "redirect:/";
     }
+    
+    
    
 }

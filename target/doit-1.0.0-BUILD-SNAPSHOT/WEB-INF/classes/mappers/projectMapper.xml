@@ -6,9 +6,34 @@
  
     <!-- 프로젝트 추가하기 -->
     <insert id="insertProject">
-        insert into project (name, explan, maxmember, img, type) values(#{name},#{explan},#{maxMember},#{img},#{type})
+     insert into project (name, explan, maxmember, img, type, leader) values(#{name},#{explan},#{maxMember},#{img},#{type},#{leader})
+       <selectKey keyProperty="no" resultType="java.lang.Integer" order="AFTER">
+          SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
     
+    <insert id="insertProjectSub">
+       insert into team (no, nickname) values(#{no}, #{leader})
+    </insert>
+    
+    
+    
+    <select id="checkWait" resultType="java.lang.Integer">
+    	select count(*) 
+    	from project_wait
+    	where no = #{no} and nickname='#{nickname}'
+    </select>
+    
+    <select id="getWaitList" resultType="java.lang.String">
+    	select nickname
+    	from project_wait
+    	where no = #{no}
+    </select>
+    
+    
+    <insert id="insertWait">
+       insert into project_wait (no, nickname) values(#{no}, #{nickname})
+    </insert>
     
     <!-- 프로젝트 리스트보기 -->
     <select id="listProject" resultType="com.kakaolove.doit.vo.projectVO">
@@ -32,6 +57,13 @@
     <!-- 프로젝트 상세보기 -->
     <select id="readProject" resultType="com.kakaolove.doit.vo.projectVO">
             select * from project where no = #{no}
+    </select>
+    
+     <!--마이프로젝트-->
+    <select id="myProjectList" resultType="com.kakaolove.doit.vo.projectVO">
+        select no,name,explan,maxmember, leader, type, img
+        from team natural join project
+		where nickname=#{nickname};
     </select>
  
  

@@ -27,6 +27,8 @@
 		
 		insert into authorities
 		VALUES (#{id},'ROLE_USER');
+	
+		
 	 </insert> 
 	 
 	 <!--  회원 정보 수정 -->

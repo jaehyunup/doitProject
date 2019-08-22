@@ -42,8 +42,7 @@ public class ProjectController {
 	 
 	//@Resource(name="projectService")
 	
-	@Inject
-	private String uploadPath;
+
 	
 	@Inject
 	private projectService service;
@@ -70,13 +69,19 @@ public class ProjectController {
 		if(authentication.getName()=="anonymousUser") { // 로그인되어있지않은(허가 되지않은) 사용자
 			return "redirect:/login";
 		}
-		
-		//authentication.getName() // 로그안한아
-    	
+		 
+        String nick=upservice.getuserProfile(authentication.getName()).getNickname();
+                
+
+        List<projectVO> plist=service.myProjectList(nick);
+        logger.info(Integer.toString(plist.size()));
+		authentication.getName(); // 로그안한아
+      	model.addAttribute("plist",plist);
     	
     	return "project/myproject";
     }
     
+
     
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public String createPOST(@RequestParam("userid") String id, projectVO project,Model model,RedirectAttributes rttr) throws Exception{
@@ -88,7 +93,6 @@ public class ProjectController {
         
         
         service.create(project);
-        
         rttr.addFlashAttribute("msg", "성공");
         return "redirect:project";
     }
@@ -123,7 +127,17 @@ public class ProjectController {
        
     }
    
-   
+    @RequestMapping(value ="/waitingjoin", method = RequestMethod.GET)
+    public String waitingjoin(Principal principal, Model model) throws Exception {
+    	 Authentication authentication=SecurityContextHolder.getContext().getAuthentication(); // context 인증정보 받기
+    	 String nick=upservice.getuserProfile(authentication.getName()).getNickname();
+         List<projectVO> plist=service.myProjectList(nick); //내프로젝트
+         String nickname=service.getWaitList(plist.get(0).getNo());//프로젝트번호)
+         userProfileVO uvo=upservice.getuserProfile(nickname);
+         model.addAttribute("waituser",uvo);
+    	return "project/projectjoin";
+    }
+
     
     @RequestMapping(value ="/joinproject", method = RequestMethod.POST)
    public String detailPost(@RequestParam("userid") String id, waitVO vo, Model model ) throws Exception{
@@ -140,14 +154,14 @@ public class ProjectController {
       
       return "redirect:project";
    }
-    
-    private String uploadFile(String originalName, byte[] fileData) throws Exception {
+	/*
 
+    private String uploadFile(String originalName, byte[] fileData) throws Exception {
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalName;
 		File target = new File(uploadPath, savedName);
 		FileCopyUtils.copy(fileData, target);
 		return savedName;
 	}
-	
+	*/
 }

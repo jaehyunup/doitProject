@@ -88,7 +88,7 @@
 		                <article class="article article-style-b">
 		                  <div class="article-header">
 		                  	<!-- image -->
-		                    <div class="article-image" data-background="../assets/img/news/img13.jpg">
+		                    <div class="article-image" data-background="<c:url value='/resources/other/theme/assets/img/news/img13.jpg'/>">
 		                    </div>
 		                    <!-- trending badge-->
 		                    <c:if test="${i.index == 0}"> <!-- 숫자 비교 -->

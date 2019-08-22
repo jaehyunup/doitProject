@@ -55,8 +55,7 @@ public class ProfileController {
     		logger.info(userprofilevo.getNickname()); // o
     		logger.info(userprofilevo.getPosition()); // o
     		logger.info(userprofilevo.getSpec()); // o
-    		logger.info(userprofilevo.getFiled()); // o
-
+    		userprofilevo.setFiled("Spring_Java");
     		
     		try{
     			profileservice.modifyuserProfile(userprofilevo); // 리턴체크해야함

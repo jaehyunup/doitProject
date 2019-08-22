@@ -110,6 +110,15 @@ function validate() {
                     <a id="checkBtn" class="btn btn-primary mt-4 text-white" role="button">중복검사</a>
                   </div>
                  </div>
+                 <div class="row">
+                  <div class="form-group col-6">
+                    <label for="nickname">닉네임</label>
+                    <input id="nickname" class="form-control" name="nickname" required autofocus>
+                    <div id="nickname-feedback" class="invalid-feedback">
+                    	닉네임을 입력해주세요
+                    </div>
+                  </div>
+                 </div>
                  
 
                    <div class="row">

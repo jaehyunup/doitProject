@@ -11,4 +11,6 @@ public interface projectService {
     public void delete(Integer no) throws Exception;
     public void update(projectVO vo) throws Exception;   
     public List<projectVO> listten() throws Exception;
+    public List<projectVO> myProjectList(String nickname) throws Exception;
+    public String getWaitList(int no) throws Exception;
 }

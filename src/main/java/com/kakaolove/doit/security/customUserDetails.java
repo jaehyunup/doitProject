@@ -13,9 +13,18 @@ public class customUserDetails implements UserDetails {
     private String id;
     private String pw;
     private String authority;
+    private String nickname;
   
     
-    @Override
+    public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
         auth.add(new SimpleGrantedAuthority(authority));

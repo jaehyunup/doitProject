@@ -19,12 +19,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kakaolove.doit.security.customUserDetails;
 import com.kakaolove.doit.service.customUserDetailsService;
+import com.kakaolove.doit.service.userProfileService;
+import com.kakaolove.doit.vo.userProfileVO;
 
 @Controller
 public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Inject
 	private customUserDetailsService service; 
+	@Inject
+	private userProfileService userprofileservice; 
 	
     @RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale,Model model) {
@@ -40,8 +44,16 @@ public class UserController {
     
     
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String create(customUserDetails userDetails,Locale locale,Model model) throws Exception {    				
-    		if(service.insertUser(userDetails)==1) { //가입 성공
+	public String create(customUserDetails userDetails, Locale locale,Model model) throws Exception {    				
+    		if(service.insertUser(userDetails)==1) { //가입 성공시 프로필도 추가
+    			
+    			userProfileVO userprofilevo=new userProfileVO();
+    			userprofilevo.setNickname(userDetails.getNickname());
+    			userprofilevo.setId((userDetails.getId())); 
+    			logger.info(userprofilevo.getId());
+    			logger.info(userprofilevo.getNickname());
+
+    			userprofileservice.insertuserProfile(userprofilevo);
     	    	return "login"; // login.jsp(Custom Login Page)
     		}
     		else { // 실패시

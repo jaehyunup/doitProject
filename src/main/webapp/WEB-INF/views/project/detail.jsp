@@ -127,7 +127,8 @@
 		            			<div class="card">
 		            			
 			            			<div class="card-body">	
-			            				<div class="gallery-item" data-image="<c:url value="/resources/other/theme/assets/assets/img/news/img09.jpg"/>" data-title="Image 1" href="assets/img/news/img09.jpg" title="Image 1" style="height: 300px;"></div>
+			            				<div class="gallery-item" data-image="<c:url value='resources/other/theme/assets/img/news/img09.jpg'/>" data-title="Image 1" 
+			            				 title="Image 1" style="height: 300px;"></div>
 			            			</div>
 		            			</div>
 		            		</div>

@@ -34,11 +34,12 @@ public class PlaceController {
     @RequestMapping(value="/place",method=RequestMethod.POST)
     public String placePOST(Model model, @RequestParam("page") int start, @RequestParam("next") String next) throws Exception{
        
-    	System.out.println(start);
     	APIParse test = new APIParse();
         if(next.equals("다음페이지")) start = start + 1;
         if(next.equals("이전페이지") && start != 1) start = start - 1;
         if(next.equals("첫페이지로")) start = 1;
+        
+    
         
         List<HashMap<String,Object>> list = test.facility(1+(start*8), 8+(start*8));
         model.addAttribute("placelist", list);
