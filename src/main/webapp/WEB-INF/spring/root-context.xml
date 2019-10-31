@@ -19,8 +19,8 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
     	<property name="url" value="jdbc:mysql://doit-database.mysql.database.azure.com/doit?useSSL=true&amp;allowMultiQueries=true&amp;serverTimezone=Asia/Seoul&amp;characterEncoding=utf8"></property>	
-    	<property name="username" value="doit@doit-database"></property>
-    	<property name="password" value="wogusdudgns1!"></property>
+    	<property name="username" value=""></property> /* 코드 오픈으로, id,password는 제거*/
+    	<property name="password" value=""></property>
 	</bean>
 
 	<!-- mybatis SqlSessionFactoryBean -->
