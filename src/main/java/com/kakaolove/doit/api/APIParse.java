@@ -38,7 +38,7 @@ public class APIParse {
 		list = new ArrayList();
 		BufferedInputStream reader = null;
 		List<HashMap<String,Object>> resultmap=null;
-		String apikey = "5a6c5749586a796833317650676e64";
+		String apikey = "my-api-key";
 		String type = "";
 		String strurl = "http://openapi.seoul.go.kr:8088/" + apikey + "/json/ListPublicReservationInstitution/" + start + "/" + end + "/" + type ;
 		try {
@@ -46,47 +46,7 @@ public class APIParse {
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
 			urlconnection.setRequestMethod("GET");
 			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(),"UTF-8"));
-			/*String line; 
-			StringBuffer retJsonString = new StringBuffer(); 
-			while((line = br.readLine()) != null) {
-				retJsonString.append(line); 
-				retJsonString.append('\r'); }
-			br.close();*/
-
-			//logger.info("���۸��� �״�Λ�:"+retJsonString)
-			
-			resultmap = parseJSONData(br);
-			/*
-			for(int j=0; j<resultSet.size(); j++){
-                //�迭 �ȿ� �ִ°͵� JSON���� �̱� ������ JSON Object �� ����
-                JSONObject facilityObj = (JSONObject) resultSet.get(j);
-                HashMap<String, String> map = new HashMap<String, String>();
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("SVCID", facilityObj.get("GUBUN").toString());
-                map.put("MAXCLASSNM", facilityObj.get("GUBUN").toString());
-                map.put("MINCLASSNM", facilityObj.get("GUBUN").toString());
-                map.put("SVCSTATNM", facilityObj.get("GUBUN").toString());
-                map.put("SVCNM", facilityObj.get("GUBUN").toString());
-                map.put("PAYATNM", facilityObj.get("GUBUN").toString());
-                map.put("PLACENM", facilityObj.get("GUBUN").toString());
-                map.put("USETGTINFO", facilityObj.get("GUBUN").toString());
-                map.put("SVCURL", facilityObj.get("GUBUN").toString());
-                map.put("X", facilityObj.get("GUBUN").toString());
-                map.put("Y", facilityObj.get("GUBUN").toString());
-                map.put("SVCOPNBGNDT", facilityObj.get("GUBUN").toString());
-                map.put("SVCOPNENDDT", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                map.put("GUBUN", facilityObj.get("GUBUN").toString());
-                list.add(facilityObj);
-            }*/
+			resultmap = parseJSONData(br);	
 		return resultmap;
 		} catch(IOException e) {
 		} finally {
@@ -95,24 +55,11 @@ public class APIParse {
 		return null;
 	}
 	
-	
 	public static List<HashMap<String,Object>> parseJSONData(BufferedReader bufferedReader) {
 		JSONArray resultSet = null;
 		List<HashMap<String,Object>> resultmaplist=new ArrayList<HashMap<String,Object>>();
         try {
-            JSONParser jsonParser = new JSONParser(); // jsonparser ���� ��ȯ
-            /*ContainerFactory orderedKeyFactory = new ContainerFactory()
-            {
-                public List creatArrayContainer() {
-                  return new LinkedList();
-                }
-
-                public Map createObjectContainer() {
-                  return new LinkedHashMap();
-                }
-
-            };*/
-            
+            JSONParser jsonParser = new JSONParser(); // 
             JSONObject jsonObject = (JSONObject)jsonParser.parse(bufferedReader);
             JSONObject LPRIObject = (JSONObject) jsonObject.get("ListPublicReservationInstitution");
 
@@ -120,22 +67,13 @@ public class APIParse {
             Gson gson = new Gson();
             
             for(int i=0;i<resultSet.size();i++) {
-            	JSONObject temp=(JSONObject)resultSet.get(i); // ���� ������ N�� �����ϴ³�� Jsonobject
-            	//logger.info(i+"��°---------------------------------\n");
-            	//logger.info(gson.fromJson(temp.toString(), HashMap.class).toString());
-            	//logger.info(i+"��° ��-------------------------------\n");
+            	JSONObject temp=(JSONObject)resultSet.get(i); 
             	resultmaplist.add(gson.fromJson(temp.toString(), HashMap.class));
             	
             }
-            
-         
-            
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
         return resultmaplist;
 	}
-	
-	
-	
 }
