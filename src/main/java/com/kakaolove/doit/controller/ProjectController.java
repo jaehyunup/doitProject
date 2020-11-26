@@ -38,12 +38,6 @@ import com.kakaolove.doit.vo.waitVO;
 
 @Controller
 public class ProjectController {	
-	private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
-	 
-	//@Resource(name="projectService")
-	
-
-	
 	@Inject
 	private projectService service;
 	@Inject
@@ -65,7 +59,6 @@ public class ProjectController {
     @RequestMapping(value="/myproject",method=RequestMethod.GET)
     public String myproject(Principal principal,Locale locale,Model model) throws Exception{
     	Authentication authentication=SecurityContextHolder.getContext().getAuthentication(); // context 인증정보 받기
-		
 		if(authentication.getName()=="anonymousUser") { // 로그인되어있지않은(허가 되지않은) 사용자
 			return "redirect:/login";
 		}
@@ -75,7 +68,7 @@ public class ProjectController {
 
         List<projectVO> plist=service.myProjectList(nick);
         logger.info(Integer.toString(plist.size()));
-		authentication.getName(); // 로그안한아
+		authentication.getName(); 
       	model.addAttribute("plist",plist);
     	
     	return "project/myproject";
@@ -86,12 +79,6 @@ public class ProjectController {
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public String createPOST(@RequestParam("userid") String id, projectVO project,Model model,RedirectAttributes rttr) throws Exception{
        project.setLeader(upservice.getuserProfile(id).getNickname());  
-        //logger.info("파일이름 :"+file.getOriginalFilename());
-       // logger.info("파일크기 : "+file.getSize());
-       // logger.info("컨텐트 타입 : "+file.getContentType());
-             
-        
-        
         service.create(project);
         rttr.addFlashAttribute("msg", "성공");
         return "redirect:project";
@@ -102,9 +89,7 @@ public class ProjectController {
 	
     @RequestMapping(value ="/detail", method = RequestMethod.GET)
     public String detail(@RequestParam("no") int no, Principal principal,Model model ) throws Exception{   
-    	
-    	Authentication authentication=SecurityContextHolder.getContext().getAuthentication(); // context 인증정보 받기
-		
+    		Authentication authentication=SecurityContextHolder.getContext().getAuthentication(); // context 인증정보 받기	
 		if(authentication.getName()!="anonymousUser") { // 로그인되어있지않은(허가 되지않은) 사용자
 			 waitVO waitvo=new waitVO();
 		        waitvo.setNo(no);
@@ -118,7 +103,6 @@ public class ProjectController {
 		        }
 		       
 		    	model.addAttribute("pVO",service.read(no));
-		    	logger.info(authentication.getName());
 		        return "project/detail";
 		}
 		
@@ -139,10 +123,9 @@ public class ProjectController {
     }
 
     
-    @RequestMapping(value ="/joinproject", method = RequestMethod.POST)
+   @RequestMapping(value ="/joinproject", method = RequestMethod.POST)
    public String detailPost(@RequestParam("userid") String id, waitVO vo, Model model ) throws Exception{
       vo.setNickname(upservice.getuserProfile(id).getNickname());
-      
       if(waitservice.checkWait(vo)!=0) {
     	  logger.info(Integer.toString(waitservice.checkWait(vo)));
           model.addAttribute("msg", "이미 등록된 프로젝트입니다");
@@ -151,17 +134,6 @@ public class ProjectController {
       waitservice.create(vo);
       model.addAttribute("msg", "프로젝트 참여를 요청하였습니다.");
       model.addAttribute("pVO",service.read(vo.getNo()));
-      
       return "redirect:project";
    }
-	/*
-
-    private String uploadFile(String originalName, byte[] fileData) throws Exception {
-		UUID uid = UUID.randomUUID();
-		String savedName = uid.toString() + "_" + originalName;
-		File target = new File(uploadPath, savedName);
-		FileCopyUtils.copy(fileData, target);
-		return savedName;
-	}
-	*/
 }
