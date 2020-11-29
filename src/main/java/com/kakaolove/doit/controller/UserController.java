@@ -24,7 +24,6 @@ import com.kakaolove.doit.vo.userProfileVO;
 
 @Controller
 public class UserController {
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Inject
 	private customUserDetailsService service; 
 	@Inject
@@ -32,33 +31,28 @@ public class UserController {
 	
     @RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale,Model model) {
-	        
-    	return "login"; // login.jsp(Custom Login Page)
+    	return "login"; 
 	}    
     
     @RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String createpage(Locale locale,Model model) {
 	        
-    	return "register"; // login.jsp(Custom Login Page)
+    	return "register";
 	}  
     
     
     @RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String create(customUserDetails userDetails, Locale locale,Model model) throws Exception {    				
-    		if(service.insertUser(userDetails)==1) { //가입 성공시 프로필도 추가
-    			
+    		if(service.insertUser(userDetails)==1) { 
     			userProfileVO userprofilevo=new userProfileVO();
     			userprofilevo.setNickname(userDetails.getNickname());
     			userprofilevo.setId((userDetails.getId())); 
-    			logger.info(userprofilevo.getId());
-    			logger.info(userprofilevo.getNickname());
-
     			userprofileservice.insertuserProfile(userprofilevo);
-    	    	return "login"; // login.jsp(Custom Login Page)
+    	    		return "login"; // login.jsp(Custom Login Page)
     		}
     		else { // 실패시
-    	    	model.addAttribute("registerresult","false");
-    	    	return "login";
+    	    		model.addAttribute("registerresult","false");
+    	    		return "login";
     		}
 	}
     
@@ -67,16 +61,13 @@ public class UserController {
     public int postIdCheck(HttpServletRequest req) throws Exception {
      String userId = req.getParameter("id");
      int result = 0;
-
      if(userId.contains("&lt;script")) {
     	 result = 1;
      }
-     
      customUserDetails userDetails=service.dupchecktUser(userId);
      if(userDetails != null) {
     	  result = 1;
      } 
-     
      return result;
     }
 	
