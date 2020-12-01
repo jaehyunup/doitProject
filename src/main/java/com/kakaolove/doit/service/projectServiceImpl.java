@@ -12,12 +12,9 @@ import com.kakaolove.doit.vo.projectVO;
 
 @Service("projectService")
 public class projectServiceImpl implements projectService{
-	
-	//@Resource(name="projectDAO")
 	@Inject
 	private projectDAO dao; 
-	
-	
+		
 	@Override
 	public void create(projectVO vo) throws Exception {
 		dao.create(vo);
@@ -50,7 +47,6 @@ public class projectServiceImpl implements projectService{
 
 	@Override
 	public List<projectVO> myProjectList(String nickname) throws Exception {
-		// TODO Auto-generated method stub
 		return dao.myProjectList(nickname);
 	}
 
